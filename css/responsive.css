@@ -1,0 +1,589 @@
+/* ==========================================================================
+   ARJUNA HARJAI - Responsive Styles
+   Mobile-First Breakpoints
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tablet Landscape & Below (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    :root {
+        --text-5xl: 3rem;
+        --text-6xl: 3.5rem;
+    }
+
+    .container {
+        padding: 0 var(--space-lg);
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr 1.2fr;
+        gap: var(--space-2xl);
+    }
+
+    .about-stats {
+        gap: var(--space-xl);
+    }
+
+    /* Discography */
+    .disco-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Press */
+    .press-content {
+        gap: var(--space-2xl);
+    }
+
+    .gallery-grid {
+        gap: var(--space-sm);
+    }
+
+    /* Contact */
+    .contact-content {
+        gap: var(--space-2xl);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet Portrait & Below (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    :root {
+        --text-4xl: 2rem;
+        --text-5xl: 2.5rem;
+        --text-6xl: 3rem;
+        --space-4xl: 4rem;
+        --navbar-height: 70px;
+    }
+
+    .section {
+        padding: var(--space-3xl) 0;
+    }
+
+    /* Navigation - Mobile Menu */
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2xl);
+        transform: translateX(100%);
+        transition: transform var(--transition-base);
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-link {
+        font-size: var(--text-xl);
+    }
+
+    /* Hero */
+    .hero-content {
+        padding: var(--space-lg);
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-base);
+    }
+
+    .tagline-text {
+        font-size: var(--text-lg);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .about-intro {
+        font-size: var(--text-xl);
+    }
+
+    .about-stats {
+        justify-content: center;
+    }
+
+    /* Music Player */
+    .music-player {
+        grid-template-columns: auto 1fr;
+        padding: var(--space-lg);
+    }
+
+    .player-artwork {
+        width: 80px;
+        height: 80px;
+        grid-row: span 1;
+    }
+
+    .player-controls {
+        grid-column: 1 / -1;
+        justify-content: center;
+        order: 3;
+    }
+
+    .player-progress {
+        grid-column: 1 / -1;
+        order: 4;
+    }
+
+    .player-volume {
+        display: none;
+    }
+
+    .player-title {
+        font-size: var(--text-lg);
+    }
+
+    /* Track List */
+    .track-item {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    /* Streaming */
+    .streaming-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .streaming-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* Videos */
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .video-filters {
+        gap: var(--space-sm);
+    }
+
+    .filter-btn {
+        padding: var(--space-xs) var(--space-md);
+        font-size: var(--text-xs);
+    }
+
+    /* Discography */
+    .disco-filters {
+        gap: var(--space-sm);
+    }
+
+    /* Press */
+    .press-content {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Contact */
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-details {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .contact-form {
+        padding: var(--space-xl);
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--space-2xl) 0;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Large (max-width: 576px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+    :root {
+        --text-3xl: 1.75rem;
+        --text-4xl: 1.75rem;
+        --text-5xl: 2rem;
+        --text-6xl: 2.5rem;
+        --space-3xl: 2.5rem;
+    }
+
+    .container {
+        padding: 0 var(--space-md);
+    }
+
+    .section-title {
+        font-size: var(--text-3xl);
+    }
+
+    /* Hero */
+    .hero-name {
+        letter-spacing: 0.15em;
+    }
+
+    .hero-subtitle {
+        letter-spacing: 0.1em;
+    }
+
+    /* About */
+    .about-stats {
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+
+    .stat-item {
+        padding: var(--space-md) 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Music Player */
+    .music-player {
+        padding: var(--space-md);
+    }
+
+    .player-artwork {
+        width: 60px;
+        height: 60px;
+    }
+
+    .player-title {
+        font-size: var(--text-base);
+    }
+
+    .player-btn-main {
+        width: 48px;
+        height: 48px;
+    }
+
+    .player-btn-main svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Track List */
+    .track-item {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+    .track-number {
+        min-width: 24px;
+    }
+
+    .track-name {
+        font-size: var(--text-sm);
+    }
+
+    .track-album {
+        font-size: var(--text-xs);
+    }
+
+    /* Discography */
+    .disco-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    /* Press Downloads */
+    .download-card {
+        padding: var(--space-md);
+        gap: var(--space-md);
+    }
+
+    .download-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .download-title {
+        font-size: var(--text-sm);
+    }
+
+    /* Contact Form */
+    .contact-form {
+        padding: var(--space-lg);
+    }
+
+    .form-group label {
+        font-size: var(--text-xs);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--text-sm);
+    }
+
+    /* Lightbox */
+    .lightbox-close {
+        top: var(--space-md);
+        right: var(--space-md);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Small (max-width: 375px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 375px) {
+    :root {
+        --text-5xl: 1.75rem;
+        --text-6xl: 2rem;
+    }
+
+    .hero-name {
+        letter-spacing: 0.1em;
+    }
+
+    .hero-subtitle {
+        font-size: var(--text-sm);
+    }
+
+    .tagline-text {
+        font-size: var(--text-base);
+    }
+
+    .about-intro {
+        font-size: var(--text-lg);
+    }
+
+    /* Music Player */
+    .music-player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .player-artwork {
+        margin-bottom: var(--space-md);
+    }
+
+    .player-info {
+        margin-bottom: var(--space-md);
+    }
+
+    .player-progress {
+        width: 100%;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Large Desktop (min-width: 1400px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1400px) {
+    :root {
+        --container-max: 1320px;
+    }
+
+    .hero-name {
+        font-size: 5rem;
+    }
+
+    .disco-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Touch Device Optimizations
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover states on touch devices */
+    .video-play {
+        opacity: 1;
+        background: rgba(196, 163, 90, 0.7);
+    }
+
+    .disco-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Larger touch targets */
+    .nav-link {
+        padding: var(--space-md);
+    }
+
+    .filter-btn {
+        min-height: 44px;
+    }
+
+    .social-link {
+        width: 52px;
+        height: 52px;
+    }
+
+    /* Disable hover animations */
+    .card-lift:hover,
+    .video-card:hover,
+    .disco-card:hover {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Print Styles
+   -------------------------------------------------------------------------- */
+@media print {
+    .film-grain,
+    .navbar,
+    .hero-cta,
+    .scroll-indicator,
+    .music-player,
+    .video-filters,
+    .disco-filters,
+    .streaming-links,
+    .social-links,
+    .contact-form,
+    .footer-social {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .hero {
+        height: auto;
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .hero-background,
+    .hero-overlay {
+        display: none;
+    }
+
+    .hero-name {
+        background: none;
+        -webkit-text-fill-color: black;
+        color: black;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   High Contrast Mode
+   -------------------------------------------------------------------------- */
+@media (prefers-contrast: high) {
+    :root {
+        --color-primary: #ffd700;
+        --color-text: #ffffff;
+        --color-text-muted: #cccccc;
+        --color-border: #444444;
+    }
+
+    .btn-primary {
+        border: 2px solid var(--color-bg);
+    }
+
+    .nav-link::after {
+        height: 2px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Dark Mode (already dark, but ensure consistency)
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+    /* Already using dark theme, no changes needed */
+}
+
+/* Light mode override if needed in future */
+@media (prefers-color-scheme: light) {
+    /* Could add light mode styles here if needed */
+}
+
+/* --------------------------------------------------------------------------
+   Landscape Orientation on Mobile
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: var(--space-xl) 0;
+    }
+
+    .hero-content {
+        padding: var(--space-md);
+    }
+
+    .hero-name {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        margin-bottom: var(--space-md);
+    }
+
+    .hero-tagline {
+        margin-bottom: var(--space-md);
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
