@@ -106,6 +106,7 @@
 
     .hero-cta {
         flex-direction: column;
+        align-content: space-around;
         gap: var(--space-md);
     }
 
