@@ -2,6 +2,9 @@
    ARJUNA HARJAI - Advanced Scroll Animations & Creative Effects
    ========================================================================== */
 
+let scrollObserver;
+let wipeObserver;
+
 document.addEventListener('DOMContentLoaded', () => {
     initLoadingScreen();
     initCustomCursor();
@@ -12,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTiltCards();
     initTextSplitAnimation();
     initAudioWaveSync();
+    initHeroParticles();
 });
 
 /* --------------------------------------------------------------------------
@@ -119,41 +123,64 @@ function initScrollAnimations() {
         return;
     }
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80px 0px',
-        threshold: 0.15
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-
-                // Add staggered animation to children
-                const children = entry.target.querySelectorAll('.stagger-child');
-                children.forEach((child, index) => {
-                    child.style.transitionDelay = `${index * 0.1}s`;
-                    child.classList.add('visible');
-                });
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-    // Reveal wipe animations
-    const wipeElements = document.querySelectorAll('.reveal-wipe');
-    const wipeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.3 });
-
-    wipeElements.forEach(el => wipeObserver.observe(el));
+    observeScrollAnimations(document);
 }
+
+function observeScrollAnimations(root = document) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+        root.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('visible'));
+        root.querySelectorAll('.reveal-wipe').forEach(el => el.classList.add('visible'));
+        return;
+    }
+
+    if (!scrollObserver) {
+        scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    const children = entry.target.querySelectorAll('.stagger-child');
+                    children.forEach((child, index) => {
+                        child.style.transitionDelay = `${index * 0.1}s`;
+                        child.classList.add('visible');
+                    });
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.15
+        });
+    }
+
+    if (!wipeObserver) {
+        wipeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+    }
+
+    root.querySelectorAll('.animate-on-scroll:not([data-scroll-observed])').forEach(el => {
+        el.dataset.scrollObserved = 'true';
+        scrollObserver.observe(el);
+    });
+
+    root.querySelectorAll('.reveal-wipe:not([data-wipe-observed])').forEach(el => {
+        el.dataset.wipeObserved = 'true';
+        wipeObserver.observe(el);
+    });
+}
+
+// Allow dynamically inserted sections (e.g. JS-rendered reels) to be observed.
+document.addEventListener('content:added', (e) => {
+    const root = e && e.detail && e.detail.root ? e.detail.root : document;
+    observeScrollAnimations(root);
+});
 
 /* --------------------------------------------------------------------------
    Parallax Effects
@@ -382,6 +409,45 @@ function initParticleSystem() {
                 particle.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
             }
         });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   Hero Particles (Auto Layout)
+   -------------------------------------------------------------------------- */
+function initHeroParticles() {
+    const container = document.querySelector('.particles-container');
+    if (!container) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const desiredCount = Number(container.dataset.particleCount) || 60;
+
+    const existing = Array.from(container.querySelectorAll('.particle'));
+    if (existing.length > desiredCount) {
+        existing.slice(desiredCount).forEach(el => el.remove());
+    } else if (existing.length < desiredCount) {
+        for (let i = existing.length; i < desiredCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            container.appendChild(particle);
+        }
+    }
+
+    const particles = Array.from(container.querySelectorAll('.particle'));
+    particles.forEach((particle) => {
+        const left = Math.random() * 100;
+        const duration = 12 + Math.random() * 12;
+        const delay = -(Math.random() * duration);
+        const size = 2 + Math.random() * 4;
+        const opacity = 0.12 + Math.random() * 0.38;
+
+        particle.style.left = `${left}%`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.setProperty('--particle-size', `${size}px`);
+        particle.style.setProperty('--particle-opacity', opacity.toFixed(2));
     });
 }
 

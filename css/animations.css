@@ -153,13 +153,19 @@
 
 .particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    top: 0;
+    width: var(--particle-size, 4px);
+    height: var(--particle-size, 4px);
     background: var(--color-primary);
     border-radius: 50%;
-    opacity: 0.3;
+    opacity: var(--particle-opacity, 0.3);
+    box-shadow: 0 0 10px rgba(196, 163, 90, 0.22);
+    will-change: transform;
     animation: floatParticle 15s infinite ease-in-out;
 }
+
+.particle:nth-child(3n) { --particle-size: 3px; --particle-opacity: 0.22; }
+.particle:nth-child(4n) { --particle-size: 5px; --particle-opacity: 0.32; }
 
 .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
 .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
@@ -181,6 +187,18 @@
 .particle:nth-child(18) { left: 95%; animation-delay: 4s; animation-duration: 15s; }
 .particle:nth-child(19) { left: 5%; animation-delay: 1s; animation-duration: 14s; }
 .particle:nth-child(20) { left: 50%; animation-delay: 0s; animation-duration: 17s; }
+.particle:nth-child(21) { left: 12%; animation-delay: 5s; animation-duration: 18s; }
+.particle:nth-child(22) { left: 28%; animation-delay: 1s; animation-duration: 13s; }
+.particle:nth-child(23) { left: 38%; animation-delay: 6s; animation-duration: 16s; }
+.particle:nth-child(24) { left: 62%; animation-delay: 2s; animation-duration: 12s; }
+.particle:nth-child(25) { left: 74%; animation-delay: 3s; animation-duration: 19s; }
+.particle:nth-child(26) { left: 88%; animation-delay: 0s; animation-duration: 14s; }
+.particle:nth-child(27) { left: 6%; animation-delay: 4s; animation-duration: 15s; }
+.particle:nth-child(28) { left: 44%; animation-delay: 7s; animation-duration: 20s; }
+.particle:nth-child(29) { left: 58%; animation-delay: 1s; animation-duration: 11s; }
+.particle:nth-child(30) { left: 82%; animation-delay: 5s; animation-duration: 17s; }
+.particle:nth-child(31) { left: 92%; animation-delay: 2s; animation-duration: 13s; }
+.particle:nth-child(32) { left: 18%; animation-delay: 6s; animation-duration: 16s; }
 
 @keyframes floatParticle {
     0%, 100% {
