@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initVideoLightbox();
     initFilters();
+    initMusicPlayer();
+    initVideoSlider();
     initContactForm();
     initScrollProgress();
+    initCountdownTimers();
+    initReelVideos();
 });
 
 /* --------------------------------------------------------------------------
@@ -163,9 +167,6 @@ function initVideoLightbox() {
    Filter Functionality
    -------------------------------------------------------------------------- */
 function initFilters() {
-    // Video filters
-    initFilterGroup('.video-filters .filter-btn', '.video-card');
-
     // Discography filters
     initFilterGroup('.disco-filters .filter-btn', '.disco-card');
 }
@@ -312,6 +313,224 @@ function initScrollProgress() {
         const scrolled = (winScroll / height) * 100;
 
         progressBar.style.width = scrolled + '%';
+    });
+}
+
+/* --------------------------------------------------------------------------
+   Music Player (Track List + Spotify Embed)
+   -------------------------------------------------------------------------- */
+function initMusicPlayer() {
+    const trackItems = document.querySelectorAll('.track-list-item');
+    const nowPlayingEmbed = document.getElementById('nowPlayingEmbed');
+    const filterBtns = document.querySelectorAll('.spotify-filters .filter-btn');
+
+    if (!trackItems.length || !nowPlayingEmbed) return;
+
+    // Click track to load in player
+    trackItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const embedUrl = item.dataset.embed;
+            if (!embedUrl) return;
+
+            // Update active state
+            trackItems.forEach(t => t.classList.remove('active'));
+            item.classList.add('active');
+
+            // Update the main Spotify embed
+            const iframe = nowPlayingEmbed.querySelector('iframe');
+            if (iframe) {
+                iframe.src = embedUrl;
+            }
+        });
+    });
+
+    // Category filter for track list
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.filter;
+
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filter track items
+            trackItems.forEach(item => {
+                const category = item.dataset.category;
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   Video Slider (YouTube)
+   -------------------------------------------------------------------------- */
+function initVideoSlider() {
+    const slider = document.getElementById('videoSlider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.slider-slide');
+    const dots = slider.querySelectorAll('.slider-dot');
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+
+    if (!slides.length) return;
+
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+        // Pause current iframe
+        const currentIframe = slides[currentSlide].querySelector('iframe');
+        if (currentIframe) {
+            currentIframe.src = currentIframe.src; // Reload to stop playback
+        }
+
+        // Update slides
+        slides[currentSlide].classList.remove('active');
+        currentSlide = ((index % slides.length) + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+
+        // Lazy-load iframe src for active slide
+        const newIframe = slides[currentSlide].querySelector('iframe');
+        const ytSrc = slides[currentSlide].dataset.ytSrc;
+        if (newIframe && ytSrc && !newIframe.src.includes('youtube.com')) {
+            newIframe.src = ytSrc;
+        }
+
+        // Update dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    // Arrow navigation
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    // Dot navigation
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const slideIndex = parseInt(dot.dataset.slide);
+            goToSlide(slideIndex);
+        });
+    });
+
+    // Keyboard navigation when slider is in view
+    document.addEventListener('keydown', (e) => {
+        const rect = slider.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) return;
+
+        if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+        if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+    });
+}
+
+/* --------------------------------------------------------------------------
+   Countdown Timers (Upcoming Music)
+   -------------------------------------------------------------------------- */
+function initCountdownTimers() {
+    const upcomingDates = document.querySelectorAll('.upcoming-date[data-date]');
+
+    if (!upcomingDates.length) return;
+
+    function updateCountdowns() {
+        upcomingDates.forEach(dateEl => {
+            const targetDate = new Date(dateEl.dataset.date).getTime();
+            const now = Date.now();
+            const diff = targetDate - now;
+
+            const timerEl = dateEl.closest('.upcoming-info').querySelector('.countdown-timer');
+            if (!timerEl) return;
+
+            if (diff <= 0) {
+                // Release date passed
+                timerEl.classList.add('released');
+                timerEl.classList.remove('urgent');
+                timerEl.innerHTML = '<span class="countdown-value" style="font-size: var(--text-lg);">Out Now!</span>';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            const daysEl = timerEl.querySelector('[data-unit="days"]');
+            const hoursEl = timerEl.querySelector('[data-unit="hours"]');
+            const minutesEl = timerEl.querySelector('[data-unit="minutes"]');
+            const secondsEl = timerEl.querySelector('[data-unit="seconds"]');
+
+            if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+
+            // Add urgent class when less than 24 hours
+            if (days === 0) {
+                timerEl.classList.add('urgent');
+            } else {
+                timerEl.classList.remove('urgent');
+            }
+        });
+    }
+
+    // Run immediately then every second
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);
+}
+
+/* --------------------------------------------------------------------------
+   Reel Videos (Autoplay/Mute Control)
+   -------------------------------------------------------------------------- */
+function initReelVideos() {
+    const reelVideos = document.querySelectorAll('[data-reel-video]');
+
+    if (!reelVideos.length) return;
+
+    // IntersectionObserver: play when visible, pause when not
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    reelVideos.forEach(video => {
+        observer.observe(video);
+
+        const card = video.closest('.reel-card');
+        const soundIndicator = card ? card.querySelector('.reel-sound-indicator') : null;
+
+        // Desktop: mouseenter unmutes, mouseleave mutes
+        if (card) {
+            card.addEventListener('mouseenter', () => {
+                video.muted = false;
+                if (soundIndicator) soundIndicator.classList.add('unmuted');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.muted = true;
+                if (soundIndicator) soundIndicator.classList.remove('unmuted');
+            });
+        }
+
+        // Mobile: tap to toggle mute
+        if (soundIndicator) {
+            soundIndicator.style.pointerEvents = 'auto';
+            soundIndicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                video.muted = !video.muted;
+                soundIndicator.classList.toggle('unmuted', !video.muted);
+            });
+        }
     });
 }
 

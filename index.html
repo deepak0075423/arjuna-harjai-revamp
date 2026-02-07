@@ -41,10 +41,12 @@
     <!-- Film Grain Overlay -->
     <div class="film-grain"></div>
 
-    <!-- Navigation -->
+    <!-- ============================================================
+         1. NAVIGATION
+         ============================================================ -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">ARJUNA</a>
+            <a href="#banner" class="nav-logo">ARJUNA</a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -52,47 +54,33 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#music" class="nav-link">Music</a></li>
-                <li><a href="#videos" class="nav-link">Videos</a></li>
-                <li><a href="#discography" class="nav-link">Discography</a></li>
-                <li><a href="#press" class="nav-link">Press Kit</a></li>
+                <li><a href="#top-songs" class="nav-link">Music</a></li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#brands" class="nav-link">Brands</a></li>
+                <li><a href="#youtube" class="nav-link">Videos</a></li>
+                <li><a href="#reels" class="nav-link">Reels</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <!-- ============================================================
+         1. BANNER (Hero)
+         ============================================================ -->
+    <section id="banner" class="hero">
         <div class="hero-background">
-            <!-- Glowing Orbs -->
             <div class="glow-orb glow-orb-1"></div>
             <div class="glow-orb glow-orb-2"></div>
             <div class="glow-orb glow-orb-3"></div>
-
-            <!-- Floating Particles -->
             <div class="particles-container">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+                <div class="particle"></div><div class="particle"></div>
             </div>
-
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -104,8 +92,23 @@
                 <span class="tagline-text">"Where Hindustani Classical Meets Contemporary Soul"</span>
             </div>
             <div class="hero-cta animate-fade-up delay-3">
-                <a href="#music" class="btn btn-primary">Listen Now</a>
+                <a href="#top-songs" class="btn btn-primary">Listen Now</a>
                 <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+            <!-- Streaming Badges -->
+            <div class="hero-streaming animate-fade-up delay-4">
+                <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" aria-label="Spotify">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                </a>
+                <a href="https://music.apple.com/us/artist/arjuna-harjai/678282929" target="_blank" rel="noopener" aria-label="Apple Music">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/arjunaharjai" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -114,7 +117,9 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ============================================================
+         2. ABOUT
+         ============================================================ -->
     <section id="about" class="section about">
         <div class="container">
             <div class="section-header">
@@ -123,8 +128,8 @@
             </div>
             <div class="about-content">
                 <div class="about-image animate-on-scroll">
-                    <div class="image-frame">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=800&fit=crop" alt="Arjuna Harjai" loading="lazy">
+                    <div class="image-frame morph-shape">
+                        <img src="assets/images/gallery/about2.jpg" alt="Arjuna Harjai" loading="lazy">
                     </div>
                 </div>
                 <div class="about-text animate-on-scroll">
@@ -134,7 +139,7 @@
                     <p>His work seamlessly blends the depth of classical Indian music with contemporary genres including pop, Sufi, ghazals, R&B, and soul, creating a signature sound that is both timeless and modern.</p>
                     <div class="about-stats">
                         <div class="stat-item">
-                            <span class="stat-number">500+</span>
+                            <span class="stat-number">1000+</span>
                             <span class="stat-label">Ad Jingles</span>
                         </div>
                         <div class="stat-item">
@@ -146,185 +151,404 @@
                             <span class="stat-label">Years Experience</span>
                         </div>
                     </div>
+                    <!-- Streaming Links -->
+                    <div class="about-streaming">
+                        <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" class="streaming-btn spotify">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                            Spotify
+                        </a>
+                        <a href="https://music.apple.com/us/artist/arjuna-harjai/678282929" target="_blank" rel="noopener" class="streaming-btn apple">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                            Apple Music
+                        </a>
+                        <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" class="streaming-btn youtube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            YouTube
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Music Section -->
-    <section id="music" class="section music">
+    <!-- ============================================================
+         3. TOP SONGS
+         ============================================================ -->
+    <section id="top-songs" class="section top-songs">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Music</h2>
+                <h2 class="section-title animate-on-scroll">Top Songs</h2>
                 <div class="section-line"></div>
+                <p class="section-subtitle animate-on-scroll">Tracks that hit Spotify's Viral 50 charts</p>
             </div>
 
-            <!-- Custom Music Player -->
-            <div class="music-player animate-on-scroll" id="musicPlayer">
-                <div class="player-artwork">
-                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop" alt="Now Playing" id="playerArtwork">
-                </div>
-                <div class="player-info">
-                    <h3 class="player-title" id="playerTitle">Winter Ayun Waliye</h3>
-                    <p class="player-artist" id="playerArtist">Arjuna Harjai</p>
-                    <!-- Audio Wave Visualization -->
-                    <div class="audio-wave" id="audioWave">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+            <!-- Music Player Container -->
+            <div class="music-player-container animate-on-scroll">
+                <!-- Now Playing - Featured Spotify Embed -->
+                <div class="now-playing">
+                    <div class="now-playing-header">
+                        <div class="now-playing-indicator">
+                            <span class="eq-bar"></span>
+                            <span class="eq-bar"></span>
+                            <span class="eq-bar"></span>
+                            <span class="eq-bar"></span>
+                        </div>
+                        <span class="now-playing-label">Now Playing</span>
+                    </div>
+                    <div class="now-playing-embed" id="nowPlayingEmbed">
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/PLACEHOLDER_ID_1?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 </div>
-                <div class="player-controls">
-                    <button class="player-btn" id="prevBtn" aria-label="Previous track">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-                    </button>
-                    <button class="player-btn player-btn-main" id="playBtn" aria-label="Play/Pause">
-                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-                    <button class="player-btn" id="nextBtn" aria-label="Next track">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-                    </button>
-                </div>
-                <div class="player-progress">
-                    <span class="progress-time" id="currentTime">0:00</span>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                        <input type="range" class="progress-input" id="progressInput" min="0" max="100" value="0">
-                    </div>
-                    <span class="progress-time" id="duration">3:45</span>
-                </div>
-                <div class="player-volume">
-                    <svg viewBox="0 0 24 24" fill="currentColor" class="volume-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
-                </div>
-            </div>
 
-            <!-- Track List -->
-            <div class="track-list animate-on-scroll">
-                <div class="track-item active" data-track="1">
-                    <span class="track-number">01</span>
-                    <div class="track-info">
-                        <span class="track-name">Winter Ayun Waliye</span>
-                        <span class="track-album">The One Minute Composer</span>
+                <!-- Track List Sidebar -->
+                <div class="track-list-panel">
+                    <div class="track-list-header">
+                        <h3>Playlist</h3>
+                        <!-- Category Filters -->
+                        <div class="spotify-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="solo">Solo</button>
+                            <button class="filter-btn" data-filter="background">Score</button>
+                        </div>
                     </div>
-                    <span class="track-duration">3:45</span>
-                </div>
-                <div class="track-item" data-track="2">
-                    <span class="track-number">02</span>
-                    <div class="track-info">
-                        <span class="track-name">Mangoge Na</span>
-                        <span class="track-album">The One Minute Composer</span>
-                    </div>
-                    <span class="track-duration">4:12</span>
-                </div>
-                <div class="track-item" data-track="3">
-                    <span class="track-number">03</span>
-                    <div class="track-info">
-                        <span class="track-name">Zikar Hai</span>
-                        <span class="track-album">The One Minute Composer</span>
-                    </div>
-                    <span class="track-duration">3:28</span>
-                </div>
-                <div class="track-item" data-track="4">
-                    <span class="track-number">04</span>
-                    <div class="track-info">
-                        <span class="track-name">Ankhiyaan</span>
-                        <span class="track-album">Do Lafzon Ki Kahani</span>
-                    </div>
-                    <span class="track-duration">4:55</span>
-                </div>
-            </div>
+                    <div class="track-list-scroll">
+                        <!-- Track 1 -->
+                        <div class="track-list-item active" data-category="solo" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_1?utm_source=generator&theme=0">
+                            <span class="track-list-number">01</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Winter Ayun Waliye</span>
+                                <span class="track-list-meta">Solo</span>
+                            </div>
+                            <span class="track-list-badge">Solo</span>
+                        </div>
 
-            <!-- Streaming Links -->
-            <div class="streaming-links animate-on-scroll">
-                <p class="streaming-label">Listen on your favorite platform</p>
-                <div class="streaming-buttons">
-                    <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" class="streaming-btn spotify">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                        Spotify
-                    </a>
-                    <a href="https://music.apple.com/us/artist/arjuna-harjai/678282929" target="_blank" rel="noopener" class="streaming-btn apple">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-                        Apple Music
-                    </a>
-                    <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" class="streaming-btn youtube">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        YouTube
-                    </a>
+                        <!-- Track 2 -->
+                        <div class="track-list-item" data-category="solo" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_2?utm_source=generator&theme=0">
+                            <span class="track-list-number">02</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Mangoge Na</span>
+                                <span class="track-list-meta">Solo</span>
+                            </div>
+                            <span class="track-list-badge">Solo</span>
+                        </div>
+
+                        <!-- Track 3 -->
+                        <div class="track-list-item" data-category="background" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_3?utm_source=generator&theme=0">
+                            <span class="track-list-number">03</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Lucknow Central Theme</span>
+                                <span class="track-list-meta">Background Score</span>
+                            </div>
+                            <span class="track-list-badge">Score</span>
+                        </div>
+
+                        <!-- Track 4 -->
+                        <div class="track-list-item" data-category="ad-jingles" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_4?utm_source=generator&theme=0">
+                            <span class="track-list-number">04</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Coca-Cola Anthem</span>
+                                <span class="track-list-meta">Ad & Jingles</span>
+                            </div>
+                            <span class="track-list-badge">Ad</span>
+                        </div>
+
+                        <!-- Track 5 -->
+                        <div class="track-list-item" data-category="ad-jingles" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_5?utm_source=generator&theme=0">
+                            <span class="track-list-number">05</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Samsung Galaxy Tune</span>
+                                <span class="track-list-meta">Ad & Jingles</span>
+                            </div>
+                            <span class="track-list-badge">Ad</span>
+                        </div>
+
+                        <!-- Track 6 -->
+                        <div class="track-list-item" data-category="background" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_6?utm_source=generator&theme=0">
+                            <span class="track-list-number">06</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Film Score Suite</span>
+                                <span class="track-list-meta">Background Score</span>
+                            </div>
+                            <span class="track-list-badge">Score</span>
+                        </div>
+
+                        <!-- Track 7 -->
+                        <div class="track-list-item" data-category="cover" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_7?utm_source=generator&theme=0">
+                            <span class="track-list-number">07</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Tum Hi Ho (Reimagined)</span>
+                                <span class="track-list-meta">Cover</span>
+                            </div>
+                            <span class="track-list-badge">Cover</span>
+                        </div>
+
+                        <!-- Track 8 -->
+                        <div class="track-list-item" data-category="cover" data-embed="https://open.spotify.com/embed/track/PLACEHOLDER_ID_8?utm_source=generator&theme=0">
+                            <span class="track-list-number">08</span>
+                            <div class="track-list-info">
+                                <span class="track-list-name">Kun Faya Kun (Cover)</span>
+                                <span class="track-list-meta">Cover</span>
+                            </div>
+                            <span class="track-list-badge">Cover</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Videos Section -->
-    <section id="videos" class="section videos">
+    <!-- ============================================================
+         4. LATEST NEWS
+         ============================================================ -->
+    <section id="news" class="section news">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Videos</h2>
+                <h2 class="section-title animate-on-scroll">Latest News</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle animate-on-scroll">Press coverage and media features</p>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-card news-featured animate-on-scroll">
+                    <div class="news-source">
+                        <span class="source-name">Rolling Stone India</span>
+                        <span class="news-badge">Featured</span>
+                    </div>
+                    <div class="news-content">
+                        <h3>Arjuna Harjai: The One Minute Composer Interview</h3>
+                        <p>Rolling Stone India sits down with the viral sensation to discuss his unique approach to songwriting — composing full songs in just one minute from random prompts.</p>
+                        <a href="https://rollingstoneindia.com/arjuna-harjai-songs-one-minute-composer-interview/" class="news-link" target="_blank" rel="noopener">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+
+                <article class="news-card animate-on-scroll">
+                    <div class="news-source">
+                        <span class="source-name">Bold Outline</span>
+                        <span class="news-badge">Release</span>
+                    </div>
+                    <div class="news-content">
+                        <h3>Arjuna Harjai Releases New Emotive Pop Single 'Zikar Hai'</h3>
+                        <p>Popular singer-songwriter and composer Arjuna Harjai drops his latest emotive pop single that showcases his versatile musical range.</p>
+                        <a href="https://boldoutline.in/popular-singer-songwriter-and-composer-arjuna-harjai-releases-new-emotive-pop-single-zikar-hai.html" class="news-link" target="_blank" rel="noopener">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+
+                <article class="news-card animate-on-scroll">
+                    <div class="news-source">
+                        <span class="source-name">Odisha TV</span>
+                        <span class="news-badge">Viral</span>
+                    </div>
+                    <div class="news-content">
+                        <h3>Singer Makes Beautiful Song Using Random Words Given By Wife</h3>
+                        <p>Arjuna Harjai wins the internet by creating a beautiful song from random words given by his wife — the video went viral with millions of views.</p>
+                        <a href="https://odishatv.in/news/entertainment/singer-arjuna-harjai-makes-beautiful-song-using-random-words-given-by-wife-internet-in-love-227212" class="news-link" target="_blank" rel="noopener">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+
+                <article class="news-card animate-on-scroll">
+                    <div class="news-source">
+                        <span class="source-name">Times of India</span>
+                        <span class="news-badge">Interview</span>
+                    </div>
+                    <div class="news-content">
+                        <h3>Arjuna Harjai Hopes to Hit the Right Chord with His Music</h3>
+                        <p>Times of India profiles the composer's journey from classical training to Bollywood, and his ambition to connect with audiences through authentic storytelling in music.</p>
+                        <a href="https://timesofindia.indiatimes.com/entertainment/hindi/music/news/arjuna-harjai-hopes-to-hit-the-right-chord-with-his-music/articleshow/45166965.cms" class="news-link" target="_blank" rel="noopener">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+
+                <article class="news-card animate-on-scroll">
+                    <div class="news-source">
+                        <span class="source-name">NDTV</span>
+                        <span class="news-badge">Viral</span>
+                    </div>
+                    <div class="news-content">
+                        <h3>Man Makes Song From Random Words Given By Wife, Internet Loves It</h3>
+                        <p>NDTV covers the viral moment where Arjuna Harjai composed a complete song from random words his wife gave him — the clip took the internet by storm.</p>
+                        <a href="https://www.ndtv.com/offbeat/man-makes-song-from-random-words-given-by-wife-internet-loves-it-5003843" class="news-link" target="_blank" rel="noopener">Read Full Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         6. BRANDS HE HAS WORKED WITH
+         ============================================================ -->
+    <section id="brands" class="section brands">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">Brands He Has Worked With</h2>
+                <div class="section-line"></div>
+                <p class="section-subtitle animate-on-scroll">Trusted by India's biggest brands for over 500 ad campaigns</p>
+            </div>
+
+            <div class="brands-marquee animate-on-scroll">
+                <div class="marquee-track">
+                    <div class="brand-item"><span>Coca-Cola</span></div>
+                    <div class="brand-item"><span>Cadbury</span></div>
+                    <div class="brand-item"><span>Samsung</span></div>
+                    <div class="brand-item"><span>Maruti Suzuki</span></div>
+                    <div class="brand-item"><span>Airtel</span></div>
+                    <div class="brand-item"><span>HDFC Bank</span></div>
+                    <div class="brand-item"><span>Reliance</span></div>
+                    <div class="brand-item"><span>Tata Motors</span></div>
+                    <div class="brand-item"><span>Amazon India</span></div>
+                    <div class="brand-item"><span>Flipkart</span></div>
+                    <!-- Duplicated for seamless loop -->
+                    <div class="brand-item"><span>Coca-Cola</span></div>
+                    <div class="brand-item"><span>Cadbury</span></div>
+                    <div class="brand-item"><span>Samsung</span></div>
+                    <div class="brand-item"><span>Maruti Suzuki</span></div>
+                    <div class="brand-item"><span>Airtel</span></div>
+                    <div class="brand-item"><span>HDFC Bank</span></div>
+                    <div class="brand-item"><span>Reliance</span></div>
+                    <div class="brand-item"><span>Tata Motors</span></div>
+                    <div class="brand-item"><span>Amazon India</span></div>
+                    <div class="brand-item"><span>Flipkart</span></div>
+                </div>
+            </div>
+
+            <!-- Second row scrolling opposite direction -->
+            <div class="brands-marquee marquee-reverse animate-on-scroll">
+                <div class="marquee-track">
+                    <div class="brand-item"><span>Star TV</span></div>
+                    <div class="brand-item"><span>Sony Entertainment</span></div>
+                    <div class="brand-item"><span>Zee Network</span></div>
+                    <div class="brand-item"><span>Colors TV</span></div>
+                    <div class="brand-item"><span>Pepsi</span></div>
+                    <div class="brand-item"><span>Mahindra</span></div>
+                    <div class="brand-item"><span>Bajaj</span></div>
+                    <div class="brand-item"><span>Titan</span></div>
+                    <div class="brand-item"><span>Amul</span></div>
+                    <div class="brand-item"><span>Dabur</span></div>
+                    <!-- Duplicated for seamless loop -->
+                    <div class="brand-item"><span>Star TV</span></div>
+                    <div class="brand-item"><span>Sony Entertainment</span></div>
+                    <div class="brand-item"><span>Zee Network</span></div>
+                    <div class="brand-item"><span>Colors TV</span></div>
+                    <div class="brand-item"><span>Pepsi</span></div>
+                    <div class="brand-item"><span>Mahindra</span></div>
+                    <div class="brand-item"><span>Bajaj</span></div>
+                    <div class="brand-item"><span>Titan</span></div>
+                    <div class="brand-item"><span>Amul</span></div>
+                    <div class="brand-item"><span>Dabur</span></div>
+                </div>
+            </div>
+
+            <!-- Films & TV Credits -->
+            <div class="brand-credits animate-on-scroll">
+                <h3>Film & Television Credits</h3>
+                <div class="credits-grid">
+                    <div class="credit-item">
+                        <span class="credit-name">Lucknow Central</span>
+                        <span class="credit-role">Background Score</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-name">Do Lafzon Ki Kahani</span>
+                        <span class="credit-role">Soundtrack</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-name">Star Plus</span>
+                        <span class="credit-role">Title Themes</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-name">Colors TV</span>
+                        <span class="credit-role">Signature Tunes</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-name">Zee Entertainment</span>
+                        <span class="credit-role">Show Themes</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-name">Sony Entertainment</span>
+                        <span class="credit-role">Title Tracks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         7. YOUTUBE VIDEOS
+         ============================================================ -->
+    <section id="youtube" class="section youtube-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll">YouTube Videos</h2>
                 <div class="section-line"></div>
             </div>
 
-            <!-- Video Filters -->
-            <div class="video-filters animate-on-scroll">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="music-video">Music Videos</button>
-                <button class="filter-btn" data-filter="live">Live Performances</button>
-                <button class="filter-btn" data-filter="bts">Behind the Scenes</button>
+            <div class="video-slider animate-on-scroll" id="videoSlider">
+                <!-- Slider Navigation -->
+                <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous video">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next video">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+
+                <!-- Slides Container -->
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Slide 1 -->
+                    <div class="slider-slide active" data-yt-src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0">
+                        <div class="video-banner-title">
+                            <h3>Winter Ayun Waliye</h3>
+                            <span>Official Music Video</span>
+                        </div>
+                        <div class="video-banner-embed">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Winter Ayun Waliye" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slider-slide" data-yt-src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0">
+                        <div class="video-banner-title">
+                            <h3>Ankhiyaan</h3>
+                            <span>Do Lafzon Ki Kahani</span>
+                        </div>
+                        <div class="video-banner-embed">
+                            <iframe src="" title="Ankhiyaan" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slider-slide" data-yt-src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0">
+                        <div class="video-banner-title">
+                            <h3>Live at Mumbai Concert</h3>
+                            <span>Live Performance</span>
+                        </div>
+                        <div class="video-banner-embed">
+                            <iframe src="" title="Live at Mumbai Concert" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slider-slide" data-yt-src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0">
+                        <div class="video-banner-title">
+                            <h3>Behind the Music - Studio Sessions</h3>
+                            <span>Behind the Scenes</span>
+                        </div>
+                        <div class="video-banner-embed">
+                            <iframe src="" title="Behind the Music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Dots -->
+                <div class="slider-dots" id="sliderDots">
+                    <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
+                    <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
+                    <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
+                    <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
+                </div>
             </div>
 
-            <!-- Video Grid -->
-            <div class="video-grid">
-                <div class="video-card animate-on-scroll" data-category="music-video">
-                    <div class="video-thumbnail" data-video="dQw4w9WgXcQ">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=340&fit=crop" alt="Winter Ayun Waliye" loading="lazy">
-                        <div class="video-play">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Winter Ayun Waliye</h3>
-                        <p>Official Music Video</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll" data-category="music-video">
-                    <div class="video-thumbnail" data-video="dQw4w9WgXcQ">
-                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600&h=340&fit=crop" alt="Ankhiyaan" loading="lazy">
-                        <div class="video-play">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Ankhiyaan</h3>
-                        <p>Do Lafzon Ki Kahani</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll" data-category="live">
-                    <div class="video-thumbnail" data-video="dQw4w9WgXcQ">
-                        <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600&h=340&fit=crop" alt="Live Performance" loading="lazy">
-                        <div class="video-play">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Live at Mumbai Concert</h3>
-                        <p>Live Performance</p>
-                    </div>
-                </div>
-                <div class="video-card animate-on-scroll" data-category="bts">
-                    <div class="video-thumbnail" data-video="dQw4w9WgXcQ">
-                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&h=340&fit=crop" alt="Studio Session" loading="lazy">
-                        <div class="video-play">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Studio Sessions</h3>
-                        <p>Behind the Scenes</p>
-                    </div>
-                </div>
+            <div class="section-cta animate-on-scroll">
+                <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" class="btn btn-outline">
+                    View All on YouTube
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-left: 8px"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -341,211 +565,127 @@
         </div>
     </div>
 
-    <!-- Discography Section -->
-    <section id="discography" class="section discography">
+    <!-- ============================================================
+         8. VIRAL REELS
+         ============================================================ -->
+    <section id="reels" class="section reels">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Discography</h2>
+                <h2 class="section-title animate-on-scroll">Viral Reels</h2>
                 <div class="section-line"></div>
+                <p class="section-subtitle animate-on-scroll">Trending on Instagram</p>
             </div>
 
-            <!-- Discography Filters -->
-            <div class="disco-filters animate-on-scroll">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="film">Films</button>
-                <button class="filter-btn" data-filter="album">Albums</button>
-                <button class="filter-btn" data-filter="single">Singles</button>
+            <div class="reels-grid">
+                <div class="reel-card animate-on-scroll">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="reel-frame">
+                            <video src="assets/videos/reel-1.mp4" muted loop playsinline data-reel-video poster="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=700&fit=crop"></video>
+                            <div class="reel-overlay">
+                                <div class="reel-stats">
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 125K</span>
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449S19.748 18 12 18 0 11.551 0 11.551 4.252 6 12 6s12 5.551 12 5.551zM16.5 12c0-2.485-2.015-4.5-4.5-4.5S7.5 9.515 7.5 12s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5z"/></svg> 2.5M</span>
+                                </div>
+                                <div class="reel-sound-indicator">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                    <p class="reel-caption">Winter Ayun Waliye - Acoustic</p>
+                </div>
+
+                <div class="reel-card animate-on-scroll">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="reel-frame">
+                            <video src="assets/videos/reel-2.mp4" muted loop playsinline data-reel-video poster="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=700&fit=crop"></video>
+                            <div class="reel-overlay">
+                                <div class="reel-stats">
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 89K</span>
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449S19.748 18 12 18 0 11.551 0 11.551 4.252 6 12 6s12 5.551 12 5.551zM16.5 12c0-2.485-2.015-4.5-4.5-4.5S7.5 9.515 7.5 12s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5z"/></svg> 1.8M</span>
+                                </div>
+                                <div class="reel-sound-indicator">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                    <p class="reel-caption">One Minute Composition Challenge</p>
+                </div>
+
+                <div class="reel-card animate-on-scroll">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="reel-frame">
+                            <video src="assets/videos/reel-3.mp4" muted loop playsinline data-reel-video poster="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=700&fit=crop"></video>
+                            <div class="reel-overlay">
+                                <div class="reel-stats">
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 67K</span>
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449S19.748 18 12 18 0 11.551 0 11.551 4.252 6 12 6s12 5.551 12 5.551zM16.5 12c0-2.485-2.015-4.5-4.5-4.5S7.5 9.515 7.5 12s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5z"/></svg> 1.2M</span>
+                                </div>
+                                <div class="reel-sound-indicator">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                    <p class="reel-caption">Mangoge Na - Making Of</p>
+                </div>
+
+                <div class="reel-card animate-on-scroll">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="reel-frame">
+                            <video src="assets/videos/reel-4.mp4" muted loop playsinline data-reel-video poster="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=700&fit=crop"></video>
+                            <div class="reel-overlay">
+                                <div class="reel-stats">
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> 45K</span>
+                                    <span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449S19.748 18 12 18 0 11.551 0 11.551 4.252 6 12 6s12 5.551 12 5.551zM16.5 12c0-2.485-2.015-4.5-4.5-4.5S7.5 9.515 7.5 12s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5z"/></svg> 900K</span>
+                                </div>
+                                <div class="reel-sound-indicator">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                    <p class="reel-caption">Classical Fusion Jam</p>
+                </div>
             </div>
 
-            <!-- Discography Grid -->
-            <div class="disco-grid">
-                <div class="disco-card animate-on-scroll" data-category="film">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=400&fit=crop" alt="Lucknow Central" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>Lucknow Central</h3>
-                        <p class="disco-year">2017</p>
-                        <p class="disco-type">Film Score</p>
-                    </div>
-                </div>
-                <div class="disco-card animate-on-scroll" data-category="film">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=400&fit=crop" alt="Do Lafzon Ki Kahani" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>Do Lafzon Ki Kahani</h3>
-                        <p class="disco-year">2016</p>
-                        <p class="disco-type">Film Soundtrack</p>
-                    </div>
-                </div>
-                <div class="disco-card animate-on-scroll" data-category="album">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop" alt="The One Minute Composer" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>The One Minute Composer</h3>
-                        <p class="disco-year">2024</p>
-                        <p class="disco-type">Album</p>
-                    </div>
-                </div>
-                <div class="disco-card animate-on-scroll" data-category="single">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop" alt="Winter Ayun Waliye" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>Winter Ayun Waliye</h3>
-                        <p class="disco-year">2024</p>
-                        <p class="disco-type">Single</p>
-                    </div>
-                </div>
-                <div class="disco-card animate-on-scroll" data-category="single">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop" alt="Mangoge Na" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>Mangoge Na</h3>
-                        <p class="disco-year">2024</p>
-                        <p class="disco-type">Single</p>
-                    </div>
-                </div>
-                <div class="disco-card animate-on-scroll" data-category="single">
-                    <div class="disco-artwork">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop" alt="Zikar Hai" loading="lazy">
-                        <div class="disco-overlay">
-                            <button class="disco-play" aria-label="Play">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="disco-info">
-                        <h3>Zikar Hai</h3>
-                        <p class="disco-year">2024</p>
-                        <p class="disco-type">Single</p>
-                    </div>
-                </div>
+            <div class="section-cta animate-on-scroll">
+                <a href="https://www.instagram.com/arjunaharjai" target="_blank" rel="noopener" class="btn btn-outline">
+                    Follow on Instagram
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="margin-left: 8px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Press Kit Section -->
-    <section id="press" class="section press">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Press Kit</h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="press-content">
-                <div class="press-downloads animate-on-scroll">
-                    <h3>Downloads</h3>
-                    <div class="download-grid">
-                        <a href="#" class="download-card">
-                            <div class="download-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
-                            </div>
-                            <div class="download-info">
-                                <span class="download-title">Electronic Press Kit</span>
-                                <span class="download-size">PDF - 2.4 MB</span>
-                            </div>
-                            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        </a>
-                        <a href="#" class="download-card">
-                            <div class="download-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                            </div>
-                            <div class="download-info">
-                                <span class="download-title">High-Res Photos</span>
-                                <span class="download-size">ZIP - 15.8 MB</span>
-                            </div>
-                            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        </a>
-                        <a href="#" class="download-card">
-                            <div class="download-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.5 17v-6l5 3-5 3z"/></svg>
-                            </div>
-                            <div class="download-info">
-                                <span class="download-title">Logo Pack</span>
-                                <span class="download-size">ZIP - 1.2 MB</span>
-                            </div>
-                            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        </a>
-                        <a href="#" class="download-card">
-                            <div class="download-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 9h-2v2H9v-2H7v-2h2V7h2v2h2v2zm4 8H6V4h7v5h5v10z"/></svg>
-                            </div>
-                            <div class="download-info">
-                                <span class="download-title">Biography (Short & Long)</span>
-                                <span class="download-size">DOCX - 45 KB</span>
-                            </div>
-                            <svg class="download-arrow" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="press-gallery animate-on-scroll">
-                    <h3>Photo Gallery</h3>
-                    <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop" alt="Press Photo 1" loading="lazy">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=300&fit=crop" alt="Press Photo 2" loading="lazy">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=300&fit=crop" alt="Press Photo 3" loading="lazy">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=400&h=300&fit=crop" alt="Press Photo 4" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- ============================================================
+         9. CONTACT US
+         ============================================================ -->
     <section id="contact" class="section contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">Get in Touch</h2>
+                <h2 class="section-title animate-on-scroll">Contact Us</h2>
                 <div class="section-line"></div>
             </div>
 
             <div class="contact-content">
                 <div class="contact-info animate-on-scroll">
                     <h3>Let's Create Together</h3>
-                    <p>For booking inquiries, collaborations, or press requests, please reach out through the form or contact details below.</p>
+                    <p>For booking inquiries, collaborations, film scoring, advertising projects, or press requests, reach out through the form or contact details below.</p>
 
                     <div class="contact-details">
                         <div class="contact-item">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            <span>contact@arjunaharjai.com</span>
+                            <span>mail@aartsense.co.uk</span>
                         </div>
                         <div class="contact-item">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -584,7 +724,9 @@
                             <option value="">Select a subject</option>
                             <option value="booking">Booking Inquiry</option>
                             <option value="collaboration">Collaboration</option>
-                            <option value="press">Press/Media</option>
+                            <option value="film">Film / TV Project</option>
+                            <option value="advertising">Advertising / Jingles</option>
+                            <option value="press">Press / Media</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -598,24 +740,40 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ============================================================
+         10. FOOTER
+         ============================================================ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">ARJUNA HARJAI</div>
-                <p class="footer-tagline">Composer | Singer-Songwriter | Music Producer</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/arjunaharjai" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                    <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" aria-label="Spotify">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="footer-logo">ARJUNA HARJAI</div>
+                        <p class="footer-tagline">Composer | Singer-Songwriter | Music Producer</p>
+                    </div>
+                    <div class="footer-nav">
+                        <a href="#about">About</a>
+                        <a href="#top-songs">Music</a>
+                        <a href="#brands">Brands</a>
+                        <a href="#youtube">Videos</a>
+                        <a href="#reels">Reels</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/arjunaharjai" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://open.spotify.com/artist/6EwLfbS1MI8kZXTIwkGfHN" target="_blank" rel="noopener" aria-label="Spotify">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@arjunaharjai" target="_blank" rel="noopener" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
-                <p class="footer-copyright">&copy; 2024 Arjuna Harjai. All rights reserved.</p>
+                <div class="footer-bottom">
+                    <p class="footer-copyright">&copy; 2025 Arjuna Harjai. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>

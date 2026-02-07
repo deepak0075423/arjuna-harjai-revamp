@@ -44,6 +44,74 @@
     .contact-content {
         gap: var(--space-2xl);
     }
+
+    /* Music Player */
+    .music-player-container {
+        grid-template-columns: 1fr 340px;
+    }
+
+    /* Video Slider */
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .slider-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* News */
+    .news-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .news-card.news-featured {
+        grid-column: 1 / -1;
+    }
+
+    /* Upcoming */
+    .upcoming-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .upcoming-grid .upcoming-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+
+    /* Countdown */
+    .countdown-value {
+        font-size: var(--text-xl);
+    }
+
+    /* Credits */
+    .credits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* YouTube Banners */
+    .video-banner-title h3 {
+        font-size: var(--text-lg);
+    }
+
+    /* Reels */
+    .reels-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .reels-grid .reel-card:last-child {
+        display: none;
+    }
+
+    .phone-mockup {
+        border-radius: 30px;
+    }
+
+    .reel-frame {
+        border-radius: 22px;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -186,18 +254,35 @@
         justify-content: center;
     }
 
-    /* Videos */
-    .video-grid {
+    /* Music Player - Stack */
+    .music-player-container {
         grid-template-columns: 1fr;
     }
 
-    .video-filters {
-        gap: var(--space-sm);
+    .now-playing {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .track-list-scroll {
+        max-height: 300px;
     }
 
     .filter-btn {
         padding: var(--space-xs) var(--space-md);
         font-size: var(--text-xs);
+    }
+
+    /* Video Slider */
+    .slider-arrow {
+        width: 36px;
+        height: 36px;
+    }
+
+    .video-banner-title {
+        flex-direction: column;
+        gap: var(--space-xs);
+        padding: var(--space-md) var(--space-lg);
     }
 
     /* Discography */
@@ -236,9 +321,91 @@
         padding: var(--space-xl);
     }
 
+    /* About Streaming */
+    .about-streaming {
+        justify-content: center;
+    }
+
+    /* Countdown */
+    .countdown-timer {
+        gap: var(--space-xs);
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .countdown-value {
+        font-size: var(--text-lg);
+    }
+
+    .countdown-segment {
+        min-width: 40px;
+    }
+
+    /* News */
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card.news-featured {
+        padding: var(--space-xl);
+    }
+
+    /* Upcoming */
+    .upcoming-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .upcoming-grid .upcoming-card:last-child {
+        max-width: 100%;
+    }
+
+    /* Credits */
+    .credits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Reels */
+    .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reels-grid .reel-card:last-child {
+        display: block;
+    }
+
+    .phone-mockup {
+        border-radius: 26px;
+        padding: 6px;
+    }
+
+    .phone-notch {
+        width: 60px;
+        height: 18px;
+    }
+
+    .reel-frame {
+        border-radius: 20px;
+    }
+
     /* Footer */
     .footer {
         padding: var(--space-2xl) 0;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: var(--space-xl);
+        text-align: center;
+    }
+
+    .footer-brand {
+        text-align: center;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
@@ -366,6 +533,143 @@
         font-size: var(--text-sm);
     }
 
+    /* Hero Streaming */
+    .hero-streaming {
+        gap: var(--space-md);
+    }
+
+    .hero-streaming a {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero-streaming a svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Music Player */
+    .now-playing {
+        padding: var(--space-md);
+    }
+
+    .track-list-header {
+        padding: var(--space-md);
+    }
+
+    .track-list-item {
+        padding: var(--space-sm) var(--space-md);
+        gap: var(--space-sm);
+    }
+
+    .track-list-badge {
+        display: none;
+    }
+
+    .track-list-scroll {
+        max-height: 250px;
+    }
+
+    /* Video Slider */
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .slider-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .video-banner-title h3 {
+        font-size: var(--text-base);
+    }
+
+    .video-banner-title span {
+        font-size: var(--text-xs);
+    }
+
+    /* Countdown */
+    .countdown-value {
+        font-size: var(--text-base);
+    }
+
+    .countdown-segment {
+        min-width: 36px;
+    }
+
+    .countdown-label {
+        font-size: 0.6rem;
+    }
+
+    /* News */
+    .news-content h3 {
+        font-size: var(--text-base);
+    }
+
+    .news-featured .news-content h3 {
+        font-size: var(--text-lg);
+    }
+
+    .news-card {
+        padding: var(--space-lg);
+    }
+
+    /* Credits */
+    .credits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-item span {
+        font-size: var(--text-base);
+    }
+
+    /* Reels */
+    .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+
+    .phone-mockup {
+        border-radius: 22px;
+        padding: 5px;
+        border-width: 2px;
+    }
+
+    .phone-notch {
+        width: 50px;
+        height: 14px;
+        top: 5px;
+    }
+
+    .phone-home-indicator {
+        width: 70px;
+        bottom: 8px;
+    }
+
+    .reel-frame {
+        border-radius: 17px;
+    }
+
+    .reel-sound-indicator {
+        width: 28px;
+        height: 28px;
+    }
+
+    .reel-sound-indicator svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* YouTube Banners */
+    .video-banner-title h3 {
+        font-size: var(--text-base);
+    }
+
+    .video-banner-title span {
+        font-size: var(--text-xs);
+    }
+
     /* Lightbox */
     .lightbox-close {
         top: var(--space-md);
@@ -422,6 +726,25 @@
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Reels */
+    .reels-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+    }
+
+    .reel-caption {
+        font-size: var(--text-xs);
+    }
+
+    /* Footer Nav */
+    .footer-nav {
+        gap: var(--space-md);
+    }
+
+    .footer-nav a {
+        font-size: var(--text-xs);
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -438,6 +761,19 @@
 
     .disco-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .music-player-container {
+        max-width: 1100px;
+        grid-template-columns: 1fr 420px;
+    }
+
+    .reels-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .video-slider {
+        max-width: 1100px;
     }
 }
 
@@ -470,11 +806,30 @@
         height: 52px;
     }
 
+    /* Show overlays on touch */
+    .reel-overlay {
+        opacity: 1;
+    }
+
+    .upcoming-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
     /* Disable hover animations */
     .card-lift:hover,
-    .video-card:hover,
-    .disco-card:hover {
+    .disco-card:hover,
+    .track-list-item:hover,
+    .news-card:hover,
+    .upcoming-card:hover,
+    .reel-card:hover {
         transform: none;
+    }
+
+    /* Slider touch targets */
+    .slider-arrow {
+        width: 44px;
+        height: 44px;
     }
 }
 
@@ -485,14 +840,21 @@
     .film-grain,
     .navbar,
     .hero-cta,
+    .hero-streaming,
     .scroll-indicator,
     .music-player,
-    .video-filters,
+    .music-player-container,
+    .video-slider,
     .disco-filters,
     .streaming-links,
+    .about-streaming,
+    .brands-marquee,
     .social-links,
     .contact-form,
-    .footer-social {
+    .footer-social,
+    .countdown-timer,
+    .youtube-banners,
+    .phone-mockup {
         display: none !important;
     }
 
