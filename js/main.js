@@ -133,6 +133,7 @@ function initVideoLightbox() {
     videoThumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', () => {
             const videoId = thumbnail.dataset.video;
+            console.log(videoId);
             if (videoId) {
                 lightboxVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 lightbox.classList.add('active');
@@ -383,26 +384,35 @@ function initVideoSlider() {
 
     if (!slides.length) return;
 
-    let currentSlide = 0;
+    let currentSlide = Array.from(slides).findIndex(s => s.classList.contains('active'));
+    if (currentSlide < 0) {
+        currentSlide = 0;
+        slides[0].classList.add('active');
+    }
+
+    function stopSlide(index) {
+        const iframe = slides[index]?.querySelector('iframe');
+        if (iframe) iframe.src = '';
+    }
+
+    function ensureSlideLoaded(index) {
+        const iframe = slides[index]?.querySelector('iframe');
+        const ytSrc = slides[index]?.dataset?.ytSrc;
+        if (!iframe || !ytSrc) return;
+        if (iframe.src !== ytSrc) iframe.src = ytSrc;
+    }
 
     function goToSlide(index) {
-        // Pause current iframe
-        const currentIframe = slides[currentSlide].querySelector('iframe');
-        if (currentIframe) {
-            currentIframe.src = currentIframe.src; // Reload to stop playback
-        }
+        // Stop current iframe playback
+        stopSlide(currentSlide);
 
         // Update slides
         slides[currentSlide].classList.remove('active');
         currentSlide = ((index % slides.length) + slides.length) % slides.length;
         slides[currentSlide].classList.add('active');
 
-        // Lazy-load iframe src for active slide
-        const newIframe = slides[currentSlide].querySelector('iframe');
-        const ytSrc = slides[currentSlide].dataset.ytSrc;
-        if (newIframe && ytSrc && !newIframe.src.includes('youtube.com')) {
-            newIframe.src = ytSrc;
-        }
+        // Load active slide iframe
+        ensureSlideLoaded(currentSlide);
 
         // Update dots
         dots.forEach(dot => dot.classList.remove('active'));
@@ -430,6 +440,18 @@ function initVideoSlider() {
         if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
         if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
     });
+
+    // Clear all non-active slides' iframes so only one YouTube embed loads at a time.
+    // Loading all 5 simultaneously causes YouTube to throttle/block playback.
+    slides.forEach((slide, i) => {
+        if (i !== currentSlide) {
+            const iframe = slide.querySelector('iframe');
+            if (iframe) iframe.src = '';
+        }
+    });
+
+    // Ensure initial slide is loaded (in case the iframe src was empty).
+    ensureSlideLoaded(currentSlide);
 }
 
 /* --------------------------------------------------------------------------
@@ -566,7 +588,19 @@ function initReelsList() {
     // If user already authored items in HTML, don't overwrite.
     if (track.children.length) return;
 
+    const jsonPath = track.dataset.reelsJson;
     const totalReels = Number(track.dataset.reelsCount) || 18;
+
+    function encodeAssetPath(path) {
+        const raw = String(path || '');
+        if (!raw) return '';
+
+        // Keep slashes, encode each segment so filenames with `#` don't get treated as fragments.
+        return raw
+            .split('/')
+            .map((seg, i) => (i === 0 ? seg : encodeURIComponent(seg)))
+            .join('/');
+    }
 
     const iconHeart = '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>';
     const iconComment = '<path d="M21 6h-18c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14l4 4v-18c0-1.1-.9-2-2-2zm-2 11h-12v-2h12v2zm0-3h-12v-2h12v2zm0-3h-12v-2h12v2z"/>';
@@ -574,14 +608,20 @@ function initReelsList() {
     const iconMore = '<path d="M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>';
     const iconSound = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
 
-    for (let i = 1; i <= totalReels; i++) {
+    function renderReel({ src, caption, likes, comments }, index) {
         const reelCard = document.createElement('div');
         reelCard.className = 'reel-card animate-on-scroll';
+
+        const safeSrc = src ? encodeAssetPath(src) : '';
+        const safeCaption = caption || `Reel #${index + 1}`;
+        const likesText = likes || '—';
+        const commentsText = comments || '—';
+
         reelCard.innerHTML = `
             <div class="phone-mockup">
                 <div class="phone-notch"></div>
                 <div class="reel-frame">
-                    <video src="assets/videos/reel${i}.mp4" muted loop playsinline preload="metadata" data-reel-video></video>
+                    <video src="${safeSrc}" muted loop playsinline preload="metadata" data-reel-video></video>
                     <div class="reel-overlay">
                         <div class="reel-top" aria-hidden="true">
                             <span class="reel-top-title">Reels</span>
@@ -589,11 +629,11 @@ function initReelsList() {
                         <div class="reel-actions" aria-hidden="true">
                             <div class="reel-action">
                                 <svg viewBox="0 0 24 24" fill="currentColor">${iconHeart}</svg>
-                                <span>—</span>
+                                <span>${likesText}</span>
                             </div>
                             <div class="reel-action">
                                 <svg viewBox="0 0 24 24" fill="currentColor">${iconComment}</svg>
-                                <span>—</span>
+                                <span>${commentsText}</span>
                             </div>
                             <div class="reel-action">
                                 <svg viewBox="0 0 24 24" fill="currentColor">${iconShare}</svg>
@@ -606,7 +646,7 @@ function initReelsList() {
                         </div>
                         <div class="reel-bottom" aria-hidden="true">
                             <div class="reel-user">@arjunaharjai</div>
-                            <div class="reel-caption-inline">Reel #${i}</div>
+                            <div class="reel-caption-inline">${safeCaption}</div>
                         </div>
                         <div class="reel-sound-indicator" aria-label="Toggle sound">
                             <svg viewBox="0 0 24 24" fill="currentColor">${iconSound}</svg>
@@ -619,7 +659,33 @@ function initReelsList() {
         track.appendChild(reelCard);
     }
 
-    document.dispatchEvent(new CustomEvent('content:added', { detail: { root: track } }));
+    function finish() {
+        document.dispatchEvent(new CustomEvent('content:added', { detail: { root: track } }));
+    }
+
+    if (jsonPath) {
+        fetch(jsonPath, { cache: 'no-store' })
+            .then((res) => res.ok ? res.json() : null)
+            .then((data) => {
+                const items = data && Array.isArray(data.items) ? data.items : null;
+                if (!items || !items.length) throw new Error('no reels');
+
+                items.forEach((item, idx) => renderReel(item, idx));
+                finish();
+            })
+            .catch(() => {
+                for (let i = 1; i <= totalReels; i++) {
+                    renderReel({ src: `assets/videos/reel${i}.mp4` }, i - 1);
+                }
+                finish();
+            });
+        return;
+    }
+
+    for (let i = 1; i <= totalReels; i++) {
+        renderReel({ src: `assets/videos/reel${i}.mp4` }, i - 1);
+    }
+    finish();
 }
 
 /* --------------------------------------------------------------------------
@@ -680,35 +746,113 @@ function initCountdownTimers() {
    Reel Videos (Autoplay/Mute Control)
    -------------------------------------------------------------------------- */
 function initReelVideos() {
-    const reelVideos = document.querySelectorAll('[data-reel-video]');
-
-    if (!reelVideos.length) return;
-
     // Browser autoplay policy: audio playback/unmute requires a user gesture.
-    // We'll only allow unmuting after the first pointer/key interaction.
+    // We try to unmute on hover; if blocked, we prompt for a one-time gesture.
     let userActivatedMedia = false;
     let lastHover = null;
     const activateMedia = () => { userActivatedMedia = true; };
-    document.addEventListener('pointerdown', activateMedia, { once: true, capture: true });
-    document.addEventListener('keydown', activateMedia, { once: true, capture: true });
 
-    async function tryUnmuteAndPlay(video, soundIndicator) {
-        // If the user hasn't interacted yet, Chrome/Safari will block unmuting.
-        if (!userActivatedMedia) {
-            if (soundIndicator) soundIndicator.classList.add('needs-gesture');
-            return;
+    // Minimal UI to ask for a first gesture (so hover-unmute can work afterwards).
+    const bannerId = 'mediaActivationBanner';
+    const existingBanner = document.getElementById(bannerId);
+    let activationBanner = existingBanner;
+
+    function ensureActivationBanner() {
+        if (activationBanner) return activationBanner;
+
+        const styleId = 'mediaActivationBannerStyle';
+        if (!document.getElementById(styleId)) {
+            const style = document.createElement('style');
+            style.id = styleId;
+            style.textContent = `
+                #${bannerId} {
+                    position: fixed;
+                    left: 50%;
+                    bottom: 18px;
+                    transform: translateX(-50%);
+                    z-index: 3000;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 10px 12px;
+                    border-radius: 999px;
+                    border: 1px solid rgba(196, 163, 90, 0.35);
+                    background: rgba(10, 10, 10, 0.75);
+                    backdrop-filter: blur(10px);
+                    color: rgba(255, 255, 255, 0.92);
+                    font-size: 0.9rem;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                }
+                #${bannerId} button {
+                    appearance: none;
+                    border: 1px solid rgba(196, 163, 90, 0.35);
+                    background: rgba(196, 163, 90, 0.18);
+                    color: rgba(255, 255, 255, 0.95);
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+                #${bannerId} button:hover {
+                    background: rgba(196, 163, 90, 0.28);
+                }
+                #${bannerId}[hidden] { display: none !important; }
+            `;
+            document.head.appendChild(style);
         }
 
-        if (soundIndicator) soundIndicator.classList.remove('needs-gesture');
+        activationBanner = document.createElement('div');
+        activationBanner.id = bannerId;
+        activationBanner.setAttribute('role', 'status');
+        activationBanner.innerHTML = `
+            <span>Enable sound for reels</span>
+            <button type="button" aria-label="Enable sound">Enable Sound</button>
+        `;
+
+        const btn = activationBanner.querySelector('button');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                userActivatedMedia = true;
+                activationBanner.hidden = true;
+                if (lastHover && lastHover.card && lastHover.card.matches(':hover')) {
+                    void tryUnmuteAndPlay(lastHover.video, lastHover.soundIndicator);
+                }
+            });
+        }
+
+        document.body.appendChild(activationBanner);
+        return activationBanner;
+    }
+
+    function hideActivationBanner() {
+        if (activationBanner) activationBanner.hidden = true;
+    }
+
+    document.addEventListener('pointerdown', () => {
+        activateMedia();
+        hideActivationBanner();
+    }, { once: true, capture: true });
+    document.addEventListener('keydown', () => {
+        activateMedia();
+        hideActivationBanner();
+    }, { once: true, capture: true });
+
+    async function tryUnmuteAndPlay(video, soundIndicator) {
+        // Try immediately: some browsers allow autoplay-with-sound based on prior engagement/settings.
+        // If blocked, fall back to muted playback and show a one-time "Enable Sound" prompt.
         video.muted = false;
         if (soundIndicator) soundIndicator.classList.add('unmuted');
 
         try {
             await video.play();
+            userActivatedMedia = true;
+            hideActivationBanner();
         } catch {
-            // Fallback: keep it muted to satisfy autoplay policy.
+            // Most common: NotAllowedError (no user gesture). Keep it muted.
             video.muted = true;
             if (soundIndicator) soundIndicator.classList.remove('unmuted');
+            video.play().catch(() => {});
+            if (!userActivatedMedia) ensureActivationBanner();
         }
     }
 
@@ -724,7 +868,10 @@ function initReelVideos() {
         });
     }, { threshold: 0.5 });
 
-    reelVideos.forEach(video => {
+    function attachReel(video) {
+        if (!video || video.dataset.reelBound === 'true') return;
+        video.dataset.reelBound = 'true';
+
         observer.observe(video);
 
         const card = video.closest('.reel-card');
@@ -734,25 +881,34 @@ function initReelVideos() {
         if (card) {
             card.addEventListener('mouseenter', () => {
                 lastHover = { video, soundIndicator, card };
-                void tryUnmuteAndPlay(video, soundIndicator);
+                if (userActivatedMedia) {
+                    // User has interacted with the page — just unmute directly.
+                    // Avoid calling play() on an already-playing video to prevent race conditions.
+                    video.muted = false;
+                    if (soundIndicator) soundIndicator.classList.add('unmuted');
+                    if (video.paused) video.play().catch(() => {});
+                } else {
+                    // No user activation yet — try to unmute; if blocked, play muted + show banner.
+                    void tryUnmuteAndPlay(video, soundIndicator);
+                }
             });
 
             card.addEventListener('mouseleave', () => {
                 video.muted = true;
                 if (soundIndicator) soundIndicator.classList.remove('unmuted');
-                if (soundIndicator) soundIndicator.classList.remove('needs-gesture');
             });
 
             // Click anywhere on the reel counts as a gesture: toggle sound.
             card.addEventListener('click', async () => {
                 userActivatedMedia = true;
+                hideActivationBanner();
+                video.play().catch(() => {});
                 if (video.muted) {
                     await tryUnmuteAndPlay(video, soundIndicator);
                 } else {
                     video.muted = true;
                     if (soundIndicator) {
                         soundIndicator.classList.remove('unmuted');
-                        soundIndicator.classList.remove('needs-gesture');
                     }
                 }
             });
@@ -764,16 +920,27 @@ function initReelVideos() {
             soundIndicator.addEventListener('click', async (e) => {
                 e.stopPropagation();
                 userActivatedMedia = true;
+                hideActivationBanner();
+                video.play().catch(() => {});
 
                 if (video.muted) {
                     await tryUnmuteAndPlay(video, soundIndicator);
                 } else {
                     video.muted = true;
                     soundIndicator.classList.remove('unmuted');
-                    soundIndicator.classList.remove('needs-gesture');
                 }
             });
         }
+    }
+
+    // Attach to initial reels (if any).
+    document.querySelectorAll('[data-reel-video]').forEach(attachReel);
+
+    // Attach to dynamically added reels (generated by JS).
+    document.addEventListener('content:added', (e) => {
+        const root = e && e.detail && e.detail.root ? e.detail.root : document;
+        if (!root.querySelectorAll) return;
+        root.querySelectorAll('[data-reel-video]').forEach(attachReel);
     });
 
     // If the user first interacts while hovering a reel, enable sound for that reel.
