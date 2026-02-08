@@ -300,6 +300,7 @@ function initMagneticButtons() {
    -------------------------------------------------------------------------- */
 function initTiltCards() {
     const cards = document.querySelectorAll('.disco-card, .video-card, .download-card');
+    const tiltImages = document.querySelectorAll('.image-frame.tilt-hover');
 
     if (window.matchMedia('(hover: none)').matches) return;
 
@@ -317,6 +318,23 @@ function initTiltCards() {
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
+        });
+    });
+
+    tiltImages.forEach(frame => {
+        frame.addEventListener('mousemove', (e) => {
+            const rect = frame.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            const rotateX = (y - 0.5) * -14;
+            const rotateY = (x - 0.5) * 14;
+
+            frame.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        frame.addEventListener('mouseleave', () => {
+            frame.style.transform = '';
         });
     });
 }
