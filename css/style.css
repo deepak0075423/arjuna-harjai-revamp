@@ -542,8 +542,8 @@ p {
 
 .image-frame img {
     width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
+    height: auto;
+    display: block;
     filter: grayscale(20%);
     transition: filter var(--transition-slow), transform 0.4s ease;
 }
