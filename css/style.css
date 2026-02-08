@@ -1998,6 +1998,37 @@ body::-webkit-scrollbar-thumb:hover {
     flex: 0 0 clamp(300px, 30vw, 420px);
 }
 
+/* Awards: static layout when <= 3 cards */
+.awards-carousel.carousel-static .slider-arrow {
+    display: none;
+}
+
+.awards-carousel.carousel-static .carousel-track {
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 4px 0 8px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.awards-carousel.carousel-static .carousel-track > * {
+    flex: initial;
+    width: auto;
+    scroll-snap-align: unset;
+}
+
+@media (max-width: 980px) {
+    .awards-carousel.carousel-static .carousel-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .awards-carousel.carousel-static .carousel-track {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* --------------------------------------------------------------------------
    Top Songs Section
    -------------------------------------------------------------------------- */
@@ -2621,38 +2652,12 @@ body::-webkit-scrollbar-thumb:hover {
     margin-bottom: var(--space-xl);
 }
 
-.credits-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+.credits-marquee::before {
+    background: linear-gradient(90deg, var(--color-bg-alt), transparent);
 }
 
-.credit-item {
-    background: var(--color-surface);
-    padding: var(--space-lg);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    transition: border-color var(--transition-fast), transform var(--transition-fast);
-}
-
-.credit-item:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
-}
-
-.credit-name {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: var(--text-lg);
-    color: var(--color-text);
-    margin-bottom: var(--space-xs);
-}
-
-.credit-role {
-    font-size: var(--text-sm);
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.credits-marquee::after {
+    background: linear-gradient(-90deg, var(--color-bg-alt), transparent);
 }
 
 /* --------------------------------------------------------------------------

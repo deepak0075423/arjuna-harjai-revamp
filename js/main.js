@@ -468,6 +468,16 @@ function initCarousels() {
         const prevBtn = carousel.querySelector('[data-carousel-prev]');
         const nextBtn = carousel.querySelector('[data-carousel-next]');
 
+        // Awards: if 3 or fewer items, show static layout (no slider).
+        if (carousel.classList.contains('awards-carousel')) {
+            const itemCount = Array.from(track.children).filter((el) => el.nodeType === 1).length;
+            if (itemCount <= 3) {
+                carousel.classList.add('carousel-static');
+                return;
+            }
+            carousel.classList.remove('carousel-static');
+        }
+
         const scrollAmount = () => Math.max(240, Math.floor(track.clientWidth * 0.9));
 
         if (prevBtn) {
