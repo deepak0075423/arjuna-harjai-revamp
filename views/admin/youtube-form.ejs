@@ -1,0 +1,26 @@
+<div class="admin-card">
+    <h3><%= video ? 'Edit YouTube Video' : 'Add YouTube Video' %></h3>
+    <form method="POST" action="<%= video ? '/admin/youtube/' + video.id : '/admin/youtube' %>">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="title">Title</label>
+                <input id="title" name="title" required value="<%= video ? video.title : '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="subtitle">Subtitle (optional)</label>
+                <input id="subtitle" name="subtitle" value="<%= video ? (video.subtitle || '') : '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="embed_url">YouTube Embed URL</label>
+                <input id="embed_url" name="embed_url" required value="<%= video ? video.embed_url : '' %>">
+                <div class="form-hint">Example: https://www.youtube.com/embed/VIDEO_ID</div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold"><%= video ? 'Update Video' : 'Create Video' %></button>
+            <a href="/admin/youtube" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>
+

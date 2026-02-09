@@ -1,0 +1,40 @@
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">Songs</h3>
+        <a class="btn-admin btn-gold btn-sm" href="/admin/songs/new">Add Song</a>
+    </div>
+
+    <% if (!songs || songs.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No songs added yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Spotify Embed</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% songs.forEach(s => { %>
+                    <tr>
+                        <td class="text-truncate"><%= s.name %></td>
+                        <td><%= s.category %></td>
+                        <td class="text-truncate"><%= s.spotify_embed_url %></td>
+                        <td><%= s.is_active ? 'Yes' : 'No' %></td>
+                        <td>
+                            <div class="actions">
+                                <a class="btn-admin btn-outline-admin btn-sm" href="/admin/songs/<%= s.id %>/edit">Edit</a>
+                                <form method="POST" action="/admin/songs/<%= s.id %>/delete" onsubmit="return confirm('Delete this song?')" style="display:inline">
+                                    <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>

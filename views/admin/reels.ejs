@@ -1,0 +1,45 @@
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">Reels</h3>
+        <a class="btn-admin btn-gold btn-sm" href="/admin/reels/new">Add Reel</a>
+    </div>
+
+    <% if (!reels || reels.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No reels added yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Preview</th>
+                    <th>Caption</th>
+                    <th>Likes</th>
+                    <th>Comments</th>
+                    <th>Instagram URL</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% reels.forEach(r => { %>
+                    <tr>
+                        <td>
+                            <video src="<%= r.video_path %>" muted loop playsinline style="width:92px; height:56px; object-fit:cover; border-radius:8px; border:1px solid var(--admin-border);"></video>
+                        </td>
+                        <td class="text-truncate"><%= r.caption || '' %></td>
+                        <td><%= r.likes || '' %></td>
+                        <td><%= r.comments || '' %></td>
+                        <td class="text-truncate"><%= r.instagram_url || '' %></td>
+                        <td>
+                            <div class="actions">
+                                <a class="btn-admin btn-outline-admin btn-sm" href="/admin/reels/<%= r.id %>/edit">Edit</a>
+                                <form method="POST" action="/admin/reels/<%= r.id %>/delete" onsubmit="return confirm('Delete this reel?')" style="display:inline">
+                                    <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+

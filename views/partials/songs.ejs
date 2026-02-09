@@ -1,0 +1,62 @@
+<!-- Top Songs Section -->
+<section id="top-songs" class="section top-songs">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title animate-on-scroll">Songs</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- Music Player Container -->
+        <div class="music-player-container animate-on-scroll">
+            <!-- Now Playing - Featured Spotify Embed -->
+            <div class="now-playing">
+                <div class="now-playing-header">
+                    <div class="now-playing-indicator">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                    <span class="now-playing-label">Now Playing</span>
+                </div>
+                <div class="now-playing-embed" id="nowPlayingEmbed">
+                    <% if (songs.length > 0) { %>
+                        <div id="spotifyEmbed" data-initial-embed="<%= songs[0].spotify_embed_url %>"></div>
+                        <noscript>
+                            <iframe style="border-radius:12px" src="<%= songs[0].spotify_embed_url %>" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </noscript>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Track List Sidebar -->
+            <div class="track-list-panel">
+                <div class="track-list-header">
+                    <h3>Playlist</h3>
+                    <!-- Category Filters -->
+                    <div class="spotify-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="movie">Movie</button>
+                        <button class="filter-btn" data-filter="independent">Independent</button>
+                    </div>
+                </div>
+                <div class="track-list-scroll">
+                    <% songs.forEach((song, index) => { %>
+                    <div
+                        class="track-list-item<%= index === 0 ? ' active' : '' %>"
+                        data-category="<%= song.category %>"
+                        data-embed="<%= song.spotify_embed_url %>"
+                    >
+                        <span class="track-list-number"><%= String(index + 1).padStart(2, '0') %></span>
+                        <div class="track-list-info">
+                            <span class="track-list-name"><%= song.name %></span>
+                            <span class="track-list-meta"><%= song.category === 'movie' ? 'Movie' : 'Independent' %></span>
+                        </div>
+                        <span class="track-list-badge"><%= song.category === 'movie' ? 'Movie' : 'Independent' %></span>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

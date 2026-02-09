@@ -1,0 +1,25 @@
+<div class="admin-card">
+    <h3>Footer</h3>
+    <form method="POST" action="/admin/footer">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="footer_brand_name">Brand Name</label>
+                <input id="footer_brand_name" name="footer_brand_name" value="<%= settings.footer_brand_name || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="footer_tagline">Tagline</label>
+                <input id="footer_tagline" name="footer_tagline" value="<%= settings.footer_tagline || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="footer_copyright">Copyright</label>
+                <input id="footer_copyright" name="footer_copyright" value="<%= settings.footer_copyright || '' %>">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold">Save Changes</button>
+            <a href="/admin" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>
+

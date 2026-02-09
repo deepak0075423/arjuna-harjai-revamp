@@ -1,0 +1,41 @@
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">Awards</h3>
+        <a class="btn-admin btn-gold btn-sm" href="/admin/awards/new">Add Award</a>
+    </div>
+
+    <% if (!awards || awards.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No awards added yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Tag</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% awards.forEach(a => { %>
+                    <tr>
+                        <td><%= a.year %></td>
+                        <td><%= a.tag %></td>
+                        <td class="text-truncate"><%= a.title %></td>
+                        <td class="text-truncate"><%= a.description %></td>
+                        <td>
+                            <div class="actions">
+                                <a class="btn-admin btn-outline-admin btn-sm" href="/admin/awards/<%= a.id %>/edit">Edit</a>
+                                <form method="POST" action="/admin/awards/<%= a.id %>/delete" onsubmit="return confirm('Delete this award?')" style="display:inline">
+                                    <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+

@@ -1,0 +1,31 @@
+<div class="admin-card">
+    <h3>Contact Form Submissions</h3>
+
+    <% if (!submissions || submissions.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No submissions yet.</p>
+    <% } else { %>
+        <% submissions.forEach(s => { %>
+            <div class="submission-card <%= s.is_read ? '' : 'unread' %>">
+                <div class="submission-header">
+                    <div>
+                        <strong><%= s.name %></strong>
+                        <div class="submission-meta"><%= s.email %> • <%= new Date(s.created_at).toLocaleString() %></div>
+                    </div>
+                    <div class="btn-group">
+                        <% if (!s.is_read) { %>
+                            <form method="POST" action="/admin/submissions/<%= s.id %>/read">
+                                <button class="btn-admin btn-outline-admin btn-sm" type="submit">Mark Read</button>
+                            </form>
+                        <% } %>
+                        <form method="POST" action="/admin/submissions/<%= s.id %>/delete" onsubmit="return confirm('Delete this submission?')">
+                            <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="submission-subject"><%= s.subject %></div>
+                <div class="submission-message"><%= s.message %></div>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+

@@ -19,6 +19,46 @@ document.addEventListener('DOMContentLoaded', () => {
     initReelVideos();
 });
 
+function getMediaControls() {
+    window.__mediaControls = window.__mediaControls || {};
+    return window.__mediaControls;
+}
+
+function getYouTubeIframeApiPromise() {
+    if (window.__youTubeIframeApiPromise) return window.__youTubeIframeApiPromise;
+
+    window.__youTubeIframeApiPromise = new Promise((resolve) => {
+        if (window.YT && window.YT.Player) {
+            resolve(window.YT);
+            return;
+        }
+
+        const existing = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = () => {
+            try {
+                if (typeof existing === 'function') existing();
+            } catch {
+                // ignore
+            }
+            resolve(window.YT);
+        };
+    });
+
+    return window.__youTubeIframeApiPromise;
+}
+
+function withYouTubeJsApi(url) {
+    try {
+        const u = new URL(String(url || ''), window.location.origin);
+        u.searchParams.set('enablejsapi', '1');
+        u.searchParams.set('origin', window.location.origin);
+        u.searchParams.set('playsinline', '1');
+        return u.toString();
+    } catch {
+        return String(url || '');
+    }
+}
+
 /* --------------------------------------------------------------------------
    Navigation
    -------------------------------------------------------------------------- */
@@ -126,18 +166,50 @@ function initSmoothScroll() {
 function initVideoLightbox() {
     const lightbox = document.getElementById('videoLightbox');
     const lightboxVideo = document.getElementById('lightboxVideo');
+    if (!lightbox || !lightboxVideo) return;
+
     const closeBtn = lightbox.querySelector('.lightbox-close');
     const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+    const controls = getMediaControls();
+    let lightboxPlayer = null;
 
     // Open lightbox
     videoThumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', () => {
             const videoId = thumbnail.dataset.video;
-            console.log(videoId);
             if (videoId) {
-                lightboxVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                // If a video is going to play, stop Spotify/music first.
+                if (typeof controls.stopSpotify === 'function') controls.stopSpotify();
+                // Stop any other YouTube embeds before opening the lightbox.
+                if (typeof controls.stopYouTube === 'function') controls.stopYouTube();
+
+                lightboxVideo.src = withYouTubeJsApi(`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
+
+                // Ensure we stop Spotify when the YouTube player actually starts playing.
+                getYouTubeIframeApiPromise()
+                    .then((YT) => {
+                        try {
+                            if (lightboxPlayer) {
+                                try { lightboxPlayer.destroy(); } catch { /* ignore */ }
+                                lightboxPlayer = null;
+                            }
+                            // lightboxVideo already has id="lightboxVideo"
+                            lightboxPlayer = new YT.Player(lightboxVideo.id, {
+                                events: {
+                                    onStateChange: (e) => {
+                                        if (e?.data === YT.PlayerState.PLAYING) {
+                                            if (typeof controls.stopSpotify === 'function') controls.stopSpotify();
+                                        }
+                                    }
+                                }
+                            });
+                        } catch {
+                            // ignore
+                        }
+                    })
+                    .catch(() => {});
             }
         });
     });
@@ -147,10 +219,14 @@ function initVideoLightbox() {
         lightbox.classList.remove('active');
         lightboxVideo.src = '';
         document.body.style.overflow = '';
+        if (lightboxPlayer) {
+            try { lightboxPlayer.destroy(); } catch { /* ignore */ }
+            lightboxPlayer = null;
+        }
     }
 
     // Close on button click
-    closeBtn.addEventListener('click', closeLightbox);
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
 
     // Close on backdrop click
     lightbox.addEventListener('click', (e) => {
@@ -218,7 +294,7 @@ function initContactForm() {
 
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Get form data
@@ -241,10 +317,40 @@ function initContactForm() {
             }
         });
 
-        if (isValid) {
-            // Show success message (visual only - no backend)
+        if (!isValid) return;
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const previousText = submitButton ? submitButton.textContent : '';
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+
+        try {
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            const payload = await response.json().catch(() => ({}));
+
+            if (!response.ok || payload.success === false) {
+                const msg = payload.message || 'Failed to send message. Please try again.';
+                console.error('Contact submit failed:', msg, payload);
+                alert(msg);
+                return;
+            }
+
             showFormSuccess(form);
             console.log('Form submitted:', data);
+        } catch (err) {
+            console.error('Contact submit error:', err);
+            alert('Failed to send message. Please check your internet connection and try again.');
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = previousText || 'Send Message';
+            }
         }
     });
 
@@ -327,8 +433,136 @@ function initMusicPlayer() {
     const trackItems = document.querySelectorAll('.track-list-item');
     const nowPlayingEmbed = document.getElementById('nowPlayingEmbed');
     const filterBtns = document.querySelectorAll('.spotify-filters .filter-btn');
+    const spotifyEmbedMount = document.getElementById('spotifyEmbed');
+    const controls = getMediaControls();
 
     if (!trackItems.length || !nowPlayingEmbed) return;
+
+    function withAutoplay(url) {
+        try {
+            const u = new URL(url, window.location.origin);
+            // Spotify sometimes ignores autoplay, but this is the best-effort for single-click play.
+            u.searchParams.set('autoplay', '1');
+            return u.toString();
+        } catch {
+            // Fallback for non-standard/relative URLs
+            if (String(url).includes('autoplay=')) return url;
+            return String(url).includes('?') ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+        }
+    }
+
+    function renderBasicIframe(embedUrl) {
+        nowPlayingEmbed.innerHTML = '';
+        const iframe = document.createElement('iframe');
+        iframe.style.borderRadius = '12px';
+        iframe.src = withAutoplay(embedUrl);
+        iframe.width = '100%';
+        iframe.height = '352';
+        iframe.frameBorder = '0';
+        iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+        iframe.loading = 'lazy';
+        nowPlayingEmbed.appendChild(iframe);
+    }
+
+    function embedUrlToSpotifyUri(embedUrl) {
+        if (!embedUrl) return null;
+        const raw = String(embedUrl).trim();
+        if (raw.startsWith('spotify:')) return raw;
+
+        try {
+            const u = new URL(raw, window.location.origin);
+            const parts = u.pathname.split('/').filter(Boolean);
+            // /embed/{type}/{id}
+            const embedIndex = parts.indexOf('embed');
+            if (embedIndex !== -1 && parts.length >= embedIndex + 3) {
+                const type = parts[embedIndex + 1];
+                const id = parts[embedIndex + 2];
+                return `spotify:${type}:${id}`;
+            }
+            // /{type}/{id}
+            if (parts.length >= 2) {
+                const type = parts[0];
+                const id = parts[1];
+                return `spotify:${type}:${id}`;
+            }
+        } catch {
+            // ignore
+        }
+        return null;
+    }
+
+    function getSpotifyIframeApiPromise() {
+        if (window.__spotifyIframeApiPromise) return window.__spotifyIframeApiPromise;
+
+        window.__spotifyIframeApiPromise = new Promise((resolve) => {
+            const existing = window.onSpotifyIframeApiReady;
+            window.onSpotifyIframeApiReady = (IFrameAPI) => {
+                try {
+                    if (typeof existing === 'function') existing(IFrameAPI);
+                } catch {
+                    // ignore
+                }
+                resolve(IFrameAPI);
+            };
+        });
+
+        return window.__spotifyIframeApiPromise;
+    }
+
+    let spotifyController = null;
+    let pendingUri = null;
+
+    // Prefer Spotify IFrame API (lets us call play() programmatically on the same click).
+    if (spotifyEmbedMount) {
+        const initialEmbed = spotifyEmbedMount.dataset.initialEmbed || trackItems[0]?.dataset?.embed || '';
+        const initialUri = embedUrlToSpotifyUri(initialEmbed);
+
+        getSpotifyIframeApiPromise()
+            .then((IFrameAPI) => {
+                if (!initialUri) {
+                    renderBasicIframe(initialEmbed);
+                    return;
+                }
+
+                IFrameAPI.createController(
+                    spotifyEmbedMount,
+                    { uri: initialUri, width: '100%', height: 352 },
+                    (controller) => {
+                        spotifyController = controller;
+                        controls.spotifyController = controller;
+                        controls.stopSpotify = () => {
+                            try {
+                                controller.pause();
+                            } catch {
+                                // ignore
+                            }
+                        };
+
+                        // When Spotify actually starts playing, stop YouTube (no hover needed).
+                        try {
+                            controller.addListener('playback_update', (e) => {
+                                if (e && e.data && e.data.isPaused === false) {
+                                    if (typeof controls.stopYouTube === 'function') controls.stopYouTube();
+                                }
+                            });
+                        } catch {
+                            // ignore
+                        }
+
+                        // If a click happened before controller was ready, replay it now.
+                        if (pendingUri) {
+                            spotifyController.loadUri(pendingUri);
+                            spotifyController.play();
+                            pendingUri = null;
+                        }
+                    }
+                );
+            })
+            .catch(() => {
+                // Fallback to basic iframe
+                renderBasicIframe(initialEmbed);
+            });
+    }
 
     // Click track to load in player
     trackItems.forEach(item => {
@@ -340,11 +574,25 @@ function initMusicPlayer() {
             trackItems.forEach(t => t.classList.remove('active'));
             item.classList.add('active');
 
-            // Update the main Spotify embed
-            const iframe = nowPlayingEmbed.querySelector('iframe');
-            if (iframe) {
-                iframe.src = embedUrl;
+            // If music is going to play, stop YouTube first.
+            if (typeof controls.stopYouTube === 'function') controls.stopYouTube();
+
+            // If Spotify controller is available, try to load + play with one click.
+            const uri = embedUrlToSpotifyUri(embedUrl);
+            if (spotifyController && uri) {
+                spotifyController.loadUri(uri);
+                spotifyController.play();
+                return;
             }
+
+            // If controller isn't ready yet, store user's intent and try when ready.
+            if (spotifyEmbedMount && uri) {
+                pendingUri = uri;
+                return;
+            }
+
+            // Fallback: update iframe src (may still require clicking play inside iframe).
+            renderBasicIframe(embedUrl);
         });
     });
 
@@ -381,6 +629,7 @@ function initVideoSlider() {
     const dots = slider.querySelectorAll('.slider-dot');
     const prevBtn = document.getElementById('sliderPrev');
     const nextBtn = document.getElementById('sliderNext');
+    const controls = getMediaControls();
 
     if (!slides.length) return;
 
@@ -392,17 +641,73 @@ function initVideoSlider() {
 
     function stopSlide(index) {
         const iframe = slides[index]?.querySelector('iframe');
-        if (iframe) iframe.src = '';
+        if (!iframe) return;
+
+        const key = iframe.id || `ytSlide-${index}`;
+        if (controls.youtubePlayers && typeof controls.youtubePlayers.get === 'function') {
+            const player = controls.youtubePlayers.get(key);
+            if (player) {
+                try { player.stopVideo(); } catch { /* ignore */ }
+                try { player.destroy(); } catch { /* ignore */ }
+                controls.youtubePlayers.delete(key);
+            }
+        }
+
+        iframe.src = '';
+    }
+
+    function stopAllYouTube() {
+        slides.forEach((_, i) => stopSlide(i));
+        const lightboxVideo = document.getElementById('lightboxVideo');
+        if (lightboxVideo) lightboxVideo.src = '';
+    }
+
+    controls.stopYouTube = stopAllYouTube;
+    controls.youtubePlayers = controls.youtubePlayers || new Map();
+
+    function ensureYouTubePlayer(index) {
+        const iframe = slides[index]?.querySelector('iframe');
+        if (!iframe || !iframe.src) return;
+
+        if (!iframe.id) iframe.id = `ytSlide-${index}`;
+        const key = iframe.id;
+        if (controls.youtubePlayers.has(key)) return;
+
+        getYouTubeIframeApiPromise()
+            .then((YT) => {
+                if (controls.youtubePlayers.has(key)) return;
+                try {
+                    const player = new YT.Player(key, {
+                        events: {
+                            onStateChange: (e) => {
+                                if (e?.data === YT.PlayerState.PLAYING) {
+                                    // When YouTube starts playing, stop Spotify.
+                                    if (typeof controls.stopSpotify === 'function') controls.stopSpotify();
+                                }
+                            }
+                        }
+                    });
+                    controls.youtubePlayers.set(key, player);
+                } catch {
+                    // ignore
+                }
+            })
+            .catch(() => {});
     }
 
     function ensureSlideLoaded(index) {
         const iframe = slides[index]?.querySelector('iframe');
         const ytSrc = slides[index]?.dataset?.ytSrc;
         if (!iframe || !ytSrc) return;
-        if (iframe.src !== ytSrc) iframe.src = ytSrc;
+        const apiUrl = withYouTubeJsApi(ytSrc);
+        if (iframe.src !== apiUrl) iframe.src = apiUrl;
+        ensureYouTubePlayer(index);
     }
 
     function goToSlide(index) {
+        // If user is navigating YouTube, stop Spotify.
+        if (typeof controls.stopSpotify === 'function') controls.stopSpotify();
+
         // Stop current iframe playback
         stopSlide(currentSlide);
 
@@ -618,7 +923,16 @@ function initReelsList() {
     const iconMore = '<path d="M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>';
     const iconSound = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
 
-    function renderReel({ src, caption, likes, comments }, index) {
+    function escapeAttr(value) {
+        return String(value || '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;');
+    }
+
+    function renderReel({ src, caption, likes, comments, instagram_url }, index) {
         const reelCard = document.createElement('div');
         reelCard.className = 'reel-card animate-on-scroll';
 
@@ -626,6 +940,16 @@ function initReelsList() {
         const safeCaption = caption || `Reel #${index + 1}`;
         const likesText = likes || '—';
         const commentsText = comments || '—';
+        const instagramUrl = instagram_url ? String(instagram_url) : '';
+        const moreEl = instagramUrl
+            ? `<a class="reel-action" href="${escapeAttr(instagramUrl)}" target="_blank" rel="noopener" aria-label="Open on Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor">${iconMore}</svg>
+                    <span>Open</span>
+               </a>`
+            : `<div class="reel-action" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">${iconMore}</svg>
+                    <span>More</span>
+               </div>`;
 
         reelCard.innerHTML = `
             <div class="phone-mockup">
@@ -649,10 +973,7 @@ function initReelsList() {
                                 <svg viewBox="0 0 24 24" fill="currentColor">${iconShare}</svg>
                                 <span>Share</span>
                             </div>
-                            <div class="reel-action">
-                                <svg viewBox="0 0 24 24" fill="currentColor">${iconMore}</svg>
-                                <span>More</span>
-                            </div>
+                            ${moreEl}
                         </div>
                         <div class="reel-bottom" aria-hidden="true">
                             <div class="reel-user">@arjunaharjai</div>
@@ -761,6 +1082,12 @@ function initReelVideos() {
     let userActivatedMedia = false;
     let lastHover = null;
     const activateMedia = () => { userActivatedMedia = true; };
+    const controls = getMediaControls();
+
+    function stopOtherMedia() {
+        if (typeof controls.stopSpotify === 'function') controls.stopSpotify();
+        if (typeof controls.stopYouTube === 'function') controls.stopYouTube();
+    }
 
     // Minimal UI to ask for a first gesture (so hover-unmute can work afterwards).
     const bannerId = 'mediaActivationBanner';
@@ -852,6 +1179,7 @@ function initReelVideos() {
         // If blocked, fall back to muted playback and show a one-time "Enable Sound" prompt.
         video.muted = false;
         if (soundIndicator) soundIndicator.classList.add('unmuted');
+        stopOtherMedia();
 
         try {
             await video.play();
@@ -889,6 +1217,11 @@ function initReelVideos() {
 
         // Desktop: mouseenter unmutes (after gesture), mouseleave mutes
         if (card) {
+            // Don't toggle sound when clicking external links inside the reel.
+            card.querySelectorAll('a').forEach((a) => {
+                a.addEventListener('click', (e) => e.stopPropagation());
+            });
+
             card.addEventListener('mouseenter', () => {
                 lastHover = { video, soundIndicator, card };
                 if (userActivatedMedia) {
@@ -896,6 +1229,7 @@ function initReelVideos() {
                     // Avoid calling play() on an already-playing video to prevent race conditions.
                     video.muted = false;
                     if (soundIndicator) soundIndicator.classList.add('unmuted');
+                    stopOtherMedia();
                     if (video.paused) video.play().catch(() => {});
                 } else {
                     // No user activation yet — try to unmute; if blocked, play muted + show banner.
@@ -941,6 +1275,14 @@ function initReelVideos() {
                 }
             });
         }
+
+        // If a reel starts playing with sound (unmuted), stop Spotify/YouTube.
+        video.addEventListener('play', () => {
+            if (!video.muted) stopOtherMedia();
+        });
+        video.addEventListener('volumechange', () => {
+            if (!video.muted && !video.paused) stopOtherMedia();
+        });
     }
 
     // Attach to initial reels (if any).

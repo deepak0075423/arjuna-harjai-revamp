@@ -1,0 +1,41 @@
+<!-- Latest News Section -->
+<section id="news" class="section news">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title animate-on-scroll">Latest News</h2>
+            <div class="section-line"></div>
+            <p class="section-subtitle animate-on-scroll">Press coverage and media features</p>
+        </div>
+
+        <div class="content-carousel news-carousel animate-on-scroll" data-carousel tabindex="0" aria-label="Latest news slider">
+            <button class="slider-arrow slider-prev" type="button" data-carousel-prev aria-label="Previous news">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="slider-arrow slider-next" type="button" data-carousel-next aria-label="Next news">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+
+            <div class="carousel-track" data-news-track data-news-json="/api/news.json">
+                <% news.slice(0, 5).forEach(article => { %>
+                <article class="news-card animate-on-scroll">
+                    <a href="<%= article.url %>" class="news-media" target="_blank" rel="noopener" aria-label="Read: <%= article.title %>">
+                        <img src="<%= article.image || '/assets/images/gallery/about2.jpg' %>" alt="<%= article.title %>" loading="lazy">
+                        <% if (article.date) { %>
+                        <time class="news-date" datetime="<%= article.date %>"><%= new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %></time>
+                        <% } %>
+                    </a>
+                    <div class="news-content">
+                        <h3><%= article.title %></h3>
+                        <% if (article.description) { %><p><%= article.description %></p><% } %>
+                        <a href="<%= article.url %>" class="news-link" target="_blank" rel="noopener">Read More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14m-7-7l7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">YouTube Videos</h3>
+        <a class="btn-admin btn-gold btn-sm" href="/admin/youtube/new">Add Video</a>
+    </div>
+
+    <% if (!videos || videos.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No YouTube videos added yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subtitle</th>
+                    <th>Embed URL</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% videos.forEach(v => { %>
+                    <tr>
+                        <td class="text-truncate"><%= v.title %></td>
+                        <td class="text-truncate"><%= v.subtitle || '' %></td>
+                        <td class="text-truncate"><%= v.embed_url %></td>
+                        <td>
+                            <div class="actions">
+                                <a class="btn-admin btn-outline-admin btn-sm" href="/admin/youtube/<%= v.id %>/edit">Edit</a>
+                                <form method="POST" action="/admin/youtube/<%= v.id %>/delete" onsubmit="return confirm('Delete this video?')" style="display:inline">
+                                    <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+

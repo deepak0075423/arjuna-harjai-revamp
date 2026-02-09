@@ -1,0 +1,39 @@
+<div class="admin-card">
+    <h3><%= reel ? 'Edit Reel' : 'Add Reel' %></h3>
+    <form method="POST" action="<%= reel ? '/admin/reels/' + reel.id : '/admin/reels' %>" enctype="multipart/form-data">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="video">Video File <%= reel ? '(optional)' : '' %></label>
+                <input id="video" type="file" name="video" <%= reel ? '' : 'required' %> accept="video/mp4,video/webm,video/quicktime">
+                <% if (reel && reel.video_path) { %>
+                    <div class="video-preview">
+                        <video src="<%= reel.video_path %>" muted loop playsinline controls></video>
+                    </div>
+                <% } %>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="instagram_url">Instagram Link (optional)</label>
+                <input id="instagram_url" name="instagram_url" value="<%= reel ? (reel.instagram_url || '') : '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="caption">Caption (optional)</label>
+                <textarea id="caption" name="caption" rows="3"><%= reel ? (reel.caption || '') : '' %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="likes">Likes (optional)</label>
+                <input id="likes" name="likes" value="<%= reel ? (reel.likes || '') : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments (optional)</label>
+                <input id="comments" name="comments" value="<%= reel ? (reel.comments || '') : '' %>">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold"><%= reel ? 'Update Reel' : 'Create Reel' %></button>
+            <a href="/admin/reels" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>
+

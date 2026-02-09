@@ -1,0 +1,42 @@
+<div class="admin-card">
+    <h3>Hero Section</h3>
+    <form method="POST" action="/admin/hero">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="hero_title">Title</label>
+                <input id="hero_title" name="hero_title" value="<%= settings.hero_title || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="hero_subtitle">Subtitle</label>
+                <input id="hero_subtitle" name="hero_subtitle" value="<%= settings.hero_subtitle || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="hero_tagline">Tagline</label>
+                <input id="hero_tagline" name="hero_tagline" value="<%= settings.hero_tagline || '' %>">
+            </div>
+
+            <div class="form-group">
+                <label for="hero_cta1_text">CTA 1 Text</label>
+                <input id="hero_cta1_text" name="hero_cta1_text" value="<%= settings.hero_cta1_text || '' %>">
+            </div>
+            <div class="form-group">
+                <label for="hero_cta1_url">CTA 1 URL</label>
+                <input id="hero_cta1_url" name="hero_cta1_url" value="<%= settings.hero_cta1_url || '' %>">
+            </div>
+            <div class="form-group">
+                <label for="hero_cta2_text">CTA 2 Text</label>
+                <input id="hero_cta2_text" name="hero_cta2_text" value="<%= settings.hero_cta2_text || '' %>">
+            </div>
+            <div class="form-group">
+                <label for="hero_cta2_url">CTA 2 URL</label>
+                <input id="hero_cta2_url" name="hero_cta2_url" value="<%= settings.hero_cta2_url || '' %>">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold">Save Changes</button>
+            <a href="/admin" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,66 @@
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.awards %></div>
+        <div class="stat-label">Awards</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.songs %></div>
+        <div class="stat-label">Songs</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.news %></div>
+        <div class="stat-label">News</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.brands %></div>
+        <div class="stat-label">Brands</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.youtube %></div>
+        <div class="stat-label">YouTube</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.reels %></div>
+        <div class="stat-label">Reels</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.submissions %></div>
+        <div class="stat-label">Submissions</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value"><%= stats.unread %></div>
+        <div class="stat-label">Unread</div>
+    </div>
+</div>
+
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">Recent Submissions</h3>
+        <a class="btn-admin btn-outline-admin btn-sm" href="/admin/submissions">View All</a>
+    </div>
+    <% if (!recentSubmissions || recentSubmissions.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No submissions yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% recentSubmissions.forEach(s => { %>
+                    <tr>
+                        <td><%= s.name %></td>
+                        <td class="text-truncate"><%= s.email %></td>
+                        <td class="text-truncate"><%= s.subject %></td>
+                        <td><%= new Date(s.created_at).toLocaleString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+

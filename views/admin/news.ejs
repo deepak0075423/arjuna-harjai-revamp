@@ -1,0 +1,49 @@
+<div class="admin-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <h3 style="margin:0;">News</h3>
+        <a class="btn-admin btn-gold btn-sm" href="/admin/news/new">Add News</a>
+    </div>
+
+    <% if (!news || news.length === 0) { %>
+        <p style="color: var(--admin-text-muted); margin-top: 12px;">No news added yet.</p>
+    <% } else { %>
+        <table class="admin-table" style="margin-top: 12px;">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Source</th>
+                    <th>Date</th>
+                    <th>URL</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% news.forEach(n => { %>
+                    <tr>
+                        <td class="text-truncate"><%= n.title %></td>
+                        <td class="text-truncate"><%= n.source || '' %></td>
+                        <td><%= n.date || '' %></td>
+                        <td class="text-truncate"><a href="<%= n.url %>" target="_blank" rel="noopener">Open</a></td>
+                        <td>
+                            <% if (n.image) { %>
+                                <img src="<%= n.image %>" alt="" style="width:56px; height:36px; object-fit:cover; border-radius:6px; border:1px solid var(--admin-border);">
+                            <% } else { %>
+                                —
+                            <% } %>
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <a class="btn-admin btn-outline-admin btn-sm" href="/admin/news/<%= n.id %>/edit">Edit</a>
+                                <form method="POST" action="/admin/news/<%= n.id %>/delete" onsubmit="return confirm('Delete this news item?')" style="display:inline">
+                                    <button class="btn-admin btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+

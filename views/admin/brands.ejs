@@ -1,0 +1,34 @@
+<div class="admin-card">
+    <h3>Brands</h3>
+    <p style="color: var(--admin-text-muted); margin-top:-8px; margin-bottom:16px;">Add/remove brand names in each marquee row.</p>
+
+    <% const groups = [
+        { key: 'brands_row1', label: 'Brands Row 1' },
+        { key: 'brands_row2', label: 'Brands Row 2' },
+        { key: 'films_row1', label: 'Films/TV Row 1' },
+        { key: 'films_row2', label: 'Films/TV Row 2' },
+    ]; %>
+
+    <% groups.forEach(g => { %>
+        <div class="brand-group">
+            <h4><%= g.label %></h4>
+            <div class="brand-tags">
+                <% (grouped[g.key] || []).forEach(b => { %>
+                    <span class="brand-tag">
+                        <%= b.name %>
+                        <form method="POST" action="/admin/brands/<%= b.id %>/delete" style="display:inline" onsubmit="return confirm('Remove this item?')">
+                            <button class="delete-btn" type="submit" aria-label="Remove">&times;</button>
+                        </form>
+                    </span>
+                <% }) %>
+            </div>
+
+            <form method="POST" action="/admin/brands" class="inline-form">
+                <input name="name" placeholder="Add new..." required>
+                <input type="hidden" name="row_group" value="<%= g.key %>">
+                <button class="btn-admin btn-gold btn-sm" type="submit">Add</button>
+            </form>
+        </div>
+    <% }) %>
+</div>
+

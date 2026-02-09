@@ -1,0 +1,47 @@
+<div class="admin-card">
+    <h3>Contact & Social</h3>
+    <form method="POST" action="/admin/contact-info">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="contact_heading">Contact Heading</label>
+                <input id="contact_heading" name="contact_heading" value="<%= settings.contact_heading || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="contact_description">Contact Description</label>
+                <textarea id="contact_description" name="contact_description" rows="4"><%= settings.contact_description || '' %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_email">Email</label>
+                <input id="contact_email" name="contact_email" value="<%= settings.contact_email || '' %>">
+            </div>
+            <div class="form-group">
+                <label for="contact_location">Location</label>
+                <input id="contact_location" name="contact_location" value="<%= settings.contact_location || '' %>">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="social_instagram">Instagram URL</label>
+                <input id="social_instagram" name="social_instagram" value="<%= settings.social_instagram || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="social_spotify">Spotify URL</label>
+                <input id="social_spotify" name="social_spotify" value="<%= settings.social_spotify || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="social_youtube">YouTube URL</label>
+                <input id="social_youtube" name="social_youtube" value="<%= settings.social_youtube || '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="social_apple_music">Apple Music URL</label>
+                <input id="social_apple_music" name="social_apple_music" value="<%= settings.social_apple_music || '' %>">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold">Save Changes</button>
+            <a href="/admin" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>
+

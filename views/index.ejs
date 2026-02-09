@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= settings.meta_description || 'Arjuna Harjai - Composer, Singer-Songwriter & Music Producer.' %>">
+    <meta name="keywords" content="Arjuna Harjai, composer, music producer, Bollywood, film score, singer-songwriter">
+    <meta name="author" content="Arjuna Harjai">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="<%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %>">
+    <meta property="og:description" content="<%= settings.meta_description || 'Award-winning composer and music producer for Bollywood films and advertising.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.arjunaharjai.com">
+
+    <title><%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %></title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo" aria-label="Arjuna Harjai">
+                <img src="/assets/images/gallery/Arjuna%20plus%20logo.png" alt="Arjuna Harjai logo">
+            </div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <%- include('partials/nav', { settings }) %>
+    <%- include('partials/hero', { settings }) %>
+    <%- include('partials/about', { settings }) %>
+    <%- include('partials/awards', { awards }) %>
+    <%- include('partials/songs', { songs }) %>
+    <%- include('partials/news', { news }) %>
+    <%- include('partials/brands', { brands }) %>
+    <%- include('partials/youtube', { youtubeVideos }) %>
+    <%- include('partials/reels', { reels }) %>
+    <%- include('partials/contact', { settings }) %>
+    <%- include('partials/footer', { settings }) %>
+
+    <!-- Scripts -->
+    <script src="/js/animations.js?v=<%= assetVersion %>"></script>
+    <script src="/js/music-player.js?v=<%= assetVersion %>"></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="/js/main.js?v=<%= assetVersion %>"></script>
+</body>
+</html>

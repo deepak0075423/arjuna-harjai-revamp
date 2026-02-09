@@ -1,0 +1,28 @@
+<div class="admin-card">
+    <h3><%= song ? 'Edit Song' : 'Add Song' %></h3>
+    <form method="POST" action="<%= song ? '/admin/songs/' + song.id : '/admin/songs' %>">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="name">Song Name</label>
+                <input id="name" name="name" required value="<%= song ? song.name : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <option value="movie" <%= song && song.category === 'movie' ? 'selected' : '' %>>Movie</option>
+                    <option value="independent" <%= song && song.category === 'independent' ? 'selected' : '' %>>Independent</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label for="spotify_embed_url">Spotify Embed URL</label>
+                <input id="spotify_embed_url" name="spotify_embed_url" required value="<%= song ? (song.spotify_embed_url || '') : '' %>">
+                <div class="form-hint">Use Spotify embed link (starts with https://open.spotify.com/embed/...).</div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold"><%= song ? 'Update Song' : 'Create Song' %></button>
+            <a href="/admin/songs" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>

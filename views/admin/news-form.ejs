@@ -1,0 +1,47 @@
+<div class="admin-card">
+    <h3><%= article ? 'Edit News' : 'Add News' %></h3>
+    <form method="POST" action="<%= article ? '/admin/news/' + article.id : '/admin/news' %>" enctype="multipart/form-data">
+        <div class="form-grid">
+            <div class="form-group full-width">
+                <label for="title">Title</label>
+                <input id="title" name="title" required value="<%= article ? article.title : '' %>">
+            </div>
+            <div class="form-group full-width">
+                <label for="description">Description (optional)</label>
+                <textarea id="description" name="description" rows="4"><%= article ? (article.description || '') : '' %></textarea>
+            </div>
+            <div class="form-group full-width">
+                <label for="url">Article URL</label>
+                <input id="url" name="url" required value="<%= article ? article.url : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="source">Source</label>
+                <input id="source" name="source" value="<%= article ? (article.source || '') : '' %>">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" type="date" name="date" value="<%= article && article.date ? String(article.date).slice(0,10) : '' %>">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="image_file">Upload Image (optional)</label>
+                <input id="image_file" type="file" name="image_file" accept="image/*">
+                <div class="form-hint">Upload a file OR provide an Image URL below.</div>
+                <% if (article && article.image) { %>
+                    <div class="image-preview"><img src="<%= article.image %>" alt="Current image"></div>
+                <% } %>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="image_url">Image URL (optional)</label>
+                <input id="image_url" name="image_url" value="<%= article ? (article.image || '') : '' %>">
+                <div class="form-hint">If you don’t upload an image, this URL will be used.</div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-admin btn-gold"><%= article ? 'Update News' : 'Create News' %></button>
+            <a href="/admin/news" class="btn-admin btn-outline-admin">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,62 @@
+<!-- Brands Section -->
+<section id="brands" class="section brands">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title animate-on-scroll">Brands He Has Worked With</h2>
+            <div class="section-line"></div>
+            <p class="section-subtitle animate-on-scroll">Trusted by India's biggest brands for over 500 ad campaigns</p>
+        </div>
+
+        <div class="brands-marquee animate-on-scroll">
+            <div class="marquee-track">
+                <% brands.row1.forEach(brand => { %>
+                <div class="brand-item"><span><%- brand.name %></span></div>
+                <% }); %>
+                <!-- Duplicated for seamless loop -->
+                <% brands.row1.forEach(brand => { %>
+                <div class="brand-item"><span><%- brand.name %></span></div>
+                <% }); %>
+            </div>
+        </div>
+
+        <!-- Second row scrolling opposite direction -->
+        <div class="brands-marquee marquee-reverse animate-on-scroll">
+            <div class="marquee-track">
+                <% brands.row2.forEach(brand => { %>
+                <div class="brand-item"><span><%- brand.name %></span></div>
+                <% }); %>
+                <!-- Duplicated for seamless loop -->
+                <% brands.row2.forEach(brand => { %>
+                <div class="brand-item"><span><%- brand.name %></span></div>
+                <% }); %>
+            </div>
+        </div>
+
+        <!-- Films & TV Credits -->
+        <div class="brand-credits animate-on-scroll">
+            <h3>Film & Television Credits</h3>
+            <div class="brands-marquee credits-marquee">
+                <div class="marquee-track">
+                    <% brands.films_row1.forEach(brand => { %>
+                    <div class="brand-item"><span><%- brand.name %></span></div>
+                    <% }); %>
+                    <!-- Duplicated for seamless loop -->
+                    <% brands.films_row1.forEach(brand => { %>
+                    <div class="brand-item"><span><%- brand.name %></span></div>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="brands-marquee marquee-reverse credits-marquee">
+                <div class="marquee-track">
+                    <% brands.films_row2.forEach(brand => { %>
+                    <div class="brand-item"><span><%- brand.name %></span></div>
+                    <% }); %>
+                    <!-- Duplicated for seamless loop -->
+                    <% brands.films_row2.forEach(brand => { %>
+                    <div class="brand-item"><span><%- brand.name %></span></div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
