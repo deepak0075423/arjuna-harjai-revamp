@@ -1,19 +1,44 @@
 <div class="admin-card">
-    <h3>Site Settings</h3>
+    <h3>SEO Settings</h3>
     <form method="POST" action="/admin/settings/site">
         <div class="form-grid">
             <div class="form-group full-width">
                 <label for="meta_title">Meta Title</label>
-                <input id="meta_title" name="meta_title" value="<%= settings.meta_title || '' %>">
+                <input id="meta_title" name="meta_title" value="<%= settings.meta_title || '' %>" placeholder="Arjuna Harjai | Composer & Music Producer">
             </div>
             <div class="form-group full-width">
                 <label for="meta_description">Meta Description</label>
-                <textarea id="meta_description" name="meta_description" rows="3"><%= settings.meta_description || '' %></textarea>
+                <textarea id="meta_description" name="meta_description" rows="3" placeholder="Arjuna Harjai - Composer, Singer-Songwriter & Music Producer."><%= settings.meta_description || '' %></textarea>
+            </div>
+            <div class="form-group full-width">
+                <label for="meta_keywords">Meta Keywords</label>
+                <input id="meta_keywords" name="meta_keywords" value="<%= settings.meta_keywords || '' %>" placeholder="Arjuna Harjai, composer, music producer, Bollywood, film score">
+            </div>
+            <div class="form-group full-width">
+                <label for="canonical_url">Canonical URL</label>
+                <input id="canonical_url" name="canonical_url" value="<%= settings.canonical_url || '' %>" placeholder="https://www.arjunaharjai.com">
+            </div>
+            <div class="form-group full-width">
+                <label for="og_image">OG Image URL <small style="color:#888">(Image shown when shared on social media)</small></label>
+                <input id="og_image" name="og_image" value="<%= settings.og_image || '' %>" placeholder="https://www.arjunaharjai.com/assets/images/og-image.jpg">
+            </div>
+            <div class="form-group">
+                <label for="robots_meta">Robots Meta</label>
+                <select id="robots_meta" name="robots_meta">
+                    <option value="index, follow" <%= (settings.robots_meta || 'index, follow') === 'index, follow' ? 'selected' : '' %>>Index, Follow (Recommended)</option>
+                    <option value="noindex, follow" <%= settings.robots_meta === 'noindex, follow' ? 'selected' : '' %>>NoIndex, Follow</option>
+                    <option value="index, nofollow" <%= settings.robots_meta === 'index, nofollow' ? 'selected' : '' %>>Index, NoFollow</option>
+                    <option value="noindex, nofollow" <%= settings.robots_meta === 'noindex, nofollow' ? 'selected' : '' %>>NoIndex, NoFollow</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="google_site_verification">Google Site Verification</label>
+                <input id="google_site_verification" name="google_site_verification" value="<%= settings.google_site_verification || '' %>" placeholder="Verification code from Google Search Console">
             </div>
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn-admin btn-gold">Save</button>
+            <button type="submit" class="btn-admin btn-gold">Save SEO Settings</button>
         </div>
     </form>
 </div>

@@ -1,13 +1,13 @@
 {
   "meta": {
     "version": 1,
-    "updatedAt": "2026-02-09T07:11:52.058Z",
+    "updatedAt": "2026-02-13T10:25:08.489Z",
     "nextIds": {
       "users": 2,
       "awards": 4,
       "songs": 15,
       "news": 27,
-      "brands": 1,
+      "brands": 95,
       "youtube_videos": 6,
       "reels": 21,
       "contact_submissions": 3
@@ -572,7 +572,736 @@
       "updated_at": "2026-02-09T06:28:33.162Z"
     }
   ],
-  "brands": [],
+  "brands": [
+    {
+      "name": "Judgementall Hai Kya",
+      "row_group": "films_row1",
+      "sort_order": 1,
+      "id": 1,
+      "created_at": "2026-02-13T10:11:42.176Z",
+      "updated_at": "2026-02-13T10:11:42.176Z"
+    },
+    {
+      "name": "Motichoor Chaknachoor",
+      "row_group": "films_row1",
+      "sort_order": 2,
+      "id": 2,
+      "created_at": "2026-02-13T10:11:50.631Z",
+      "updated_at": "2026-02-13T10:11:50.631Z"
+    },
+    {
+      "name": "Dolly Kitty Aur Woh Chamakte Sitare",
+      "row_group": "films_row1",
+      "sort_order": 3,
+      "id": 3,
+      "created_at": "2026-02-13T10:11:59.277Z",
+      "updated_at": "2026-02-13T10:11:59.277Z"
+    },
+    {
+      "name": "Lucknow Central",
+      "row_group": "films_row1",
+      "sort_order": 4,
+      "id": 4,
+      "created_at": "2026-02-13T10:12:06.031Z",
+      "updated_at": "2026-02-13T10:12:06.031Z"
+    },
+    {
+      "name": "That is Mahalakshmi",
+      "row_group": "films_row1",
+      "sort_order": 5,
+      "id": 5,
+      "created_at": "2026-02-13T10:12:13.941Z",
+      "updated_at": "2026-02-13T10:12:13.941Z"
+    },
+    {
+      "name": "Do Lafzon Ki Kahani",
+      "row_group": "films_row1",
+      "sort_order": 6,
+      "id": 6,
+      "created_at": "2026-02-13T10:12:21.613Z",
+      "updated_at": "2026-02-13T10:12:21.613Z"
+    },
+    {
+      "name": "Hero",
+      "row_group": "films_row1",
+      "sort_order": 7,
+      "id": 7,
+      "created_at": "2026-02-13T10:12:29.813Z",
+      "updated_at": "2026-02-13T10:12:29.813Z"
+    },
+    {
+      "name": "Guddu Engineer",
+      "row_group": "films_row1",
+      "sort_order": 8,
+      "id": 8,
+      "created_at": "2026-02-13T10:12:38.299Z",
+      "updated_at": "2026-02-13T10:12:38.299Z"
+    },
+    {
+      "name": "Titoo MBA",
+      "row_group": "films_row1",
+      "sort_order": 9,
+      "id": 9,
+      "created_at": "2026-02-13T10:12:46.514Z",
+      "updated_at": "2026-02-13T10:12:46.514Z"
+    },
+    {
+      "name": "P.O.W. – Bandi Yuddh Ke",
+      "row_group": "films_row2",
+      "sort_order": 1,
+      "id": 10,
+      "created_at": "2026-02-13T10:12:53.480Z",
+      "updated_at": "2026-02-13T10:12:53.480Z"
+    },
+    {
+      "name": "Jindua",
+      "row_group": "films_row2",
+      "sort_order": 2,
+      "id": 11,
+      "created_at": "2026-02-13T10:13:02.243Z",
+      "updated_at": "2026-02-13T10:13:02.243Z"
+    },
+    {
+      "name": "Mahi NRI",
+      "row_group": "films_row2",
+      "sort_order": 3,
+      "id": 12,
+      "created_at": "2026-02-13T10:13:27.706Z",
+      "updated_at": "2026-02-13T10:13:27.706Z"
+    },
+    {
+      "name": "Hair Is Falling",
+      "row_group": "films_row2",
+      "sort_order": 4,
+      "id": 13,
+      "created_at": "2026-02-13T10:13:33.328Z",
+      "updated_at": "2026-02-13T10:13:33.328Z"
+    },
+    {
+      "name": "Calapor",
+      "row_group": "films_row2",
+      "sort_order": 5,
+      "id": 14,
+      "created_at": "2026-02-13T10:13:38.613Z",
+      "updated_at": "2026-02-13T10:13:38.613Z"
+    },
+    {
+      "name": "Besharam",
+      "row_group": "films_row2",
+      "sort_order": 6,
+      "id": 15,
+      "created_at": "2026-02-13T10:13:44.787Z",
+      "updated_at": "2026-02-13T10:13:44.787Z"
+    },
+    {
+      "name": "Kapoor & Sons",
+      "row_group": "films_row2",
+      "sort_order": 7,
+      "id": 16,
+      "created_at": "2026-02-13T10:13:50.797Z",
+      "updated_at": "2026-02-13T10:13:50.797Z"
+    },
+    {
+      "name": "Laage Nahi Mann",
+      "row_group": "films_row2",
+      "sort_order": 8,
+      "id": 17,
+      "created_at": "2026-02-13T10:13:58.072Z",
+      "updated_at": "2026-02-13T10:13:58.072Z"
+    },
+    {
+      "name": "Amazon",
+      "row_group": "brands_row1",
+      "sort_order": 1,
+      "id": 18,
+      "created_at": "2026-02-13T10:14:53.161Z",
+      "updated_at": "2026-02-13T10:14:53.161Z"
+    },
+    {
+      "name": "Coca-Cola",
+      "row_group": "brands_row1",
+      "sort_order": 2,
+      "id": 19,
+      "created_at": "2026-02-13T10:16:08.223Z",
+      "updated_at": "2026-02-13T10:16:08.223Z"
+    },
+    {
+      "name": "Cadbury",
+      "row_group": "brands_row1",
+      "sort_order": 3,
+      "id": 20,
+      "created_at": "2026-02-13T10:16:13.480Z",
+      "updated_at": "2026-02-13T10:16:13.480Z"
+    },
+    {
+      "name": "Google",
+      "row_group": "brands_row1",
+      "sort_order": 4,
+      "id": 21,
+      "created_at": "2026-02-13T10:16:20.290Z",
+      "updated_at": "2026-02-13T10:16:20.290Z"
+    },
+    {
+      "name": "Dettol",
+      "row_group": "brands_row1",
+      "sort_order": 5,
+      "id": 22,
+      "created_at": "2026-02-13T10:16:26.164Z",
+      "updated_at": "2026-02-13T10:16:26.164Z"
+    },
+    {
+      "name": "Tanishq",
+      "row_group": "brands_row1",
+      "sort_order": 6,
+      "id": 23,
+      "created_at": "2026-02-13T10:16:32.731Z",
+      "updated_at": "2026-02-13T10:16:32.731Z"
+    },
+    {
+      "name": "Axis Bank",
+      "row_group": "brands_row1",
+      "sort_order": 7,
+      "id": 24,
+      "created_at": "2026-02-13T10:16:39.959Z",
+      "updated_at": "2026-02-13T10:16:39.959Z"
+    },
+    {
+      "name": "Massey Ferguson",
+      "row_group": "brands_row1",
+      "sort_order": 8,
+      "id": 25,
+      "created_at": "2026-02-13T10:16:45.193Z",
+      "updated_at": "2026-02-13T10:16:45.193Z"
+    },
+    {
+      "name": "Asian Paints",
+      "row_group": "brands_row1",
+      "sort_order": 9,
+      "id": 26,
+      "created_at": "2026-02-13T10:16:51.521Z",
+      "updated_at": "2026-02-13T10:16:51.521Z"
+    },
+    {
+      "name": "OnePlus",
+      "row_group": "brands_row1",
+      "sort_order": 10,
+      "id": 27,
+      "created_at": "2026-02-13T10:16:58.981Z",
+      "updated_at": "2026-02-13T10:16:58.981Z"
+    },
+    {
+      "name": "Jio",
+      "row_group": "brands_row1",
+      "sort_order": 11,
+      "id": 28,
+      "created_at": "2026-02-13T10:17:04.664Z",
+      "updated_at": "2026-02-13T10:17:04.664Z"
+    },
+    {
+      "name": "Flipkart",
+      "row_group": "brands_row1",
+      "sort_order": 12,
+      "id": 29,
+      "created_at": "2026-02-13T10:17:10.656Z",
+      "updated_at": "2026-02-13T10:17:10.656Z"
+    },
+    {
+      "name": "Lenovo",
+      "row_group": "brands_row1",
+      "sort_order": 13,
+      "id": 30,
+      "created_at": "2026-02-13T10:17:16.771Z",
+      "updated_at": "2026-02-13T10:17:16.771Z"
+    },
+    {
+      "name": "Lay’s",
+      "row_group": "brands_row1",
+      "sort_order": 14,
+      "id": 31,
+      "created_at": "2026-02-13T10:17:21.930Z",
+      "updated_at": "2026-02-13T10:17:21.930Z"
+    },
+    {
+      "name": "Sony",
+      "row_group": "brands_row1",
+      "sort_order": 15,
+      "id": 32,
+      "created_at": "2026-02-13T10:17:27.347Z",
+      "updated_at": "2026-02-13T10:17:27.347Z"
+    },
+    {
+      "name": "Cornetto",
+      "row_group": "brands_row1",
+      "sort_order": 16,
+      "id": 33,
+      "created_at": "2026-02-13T10:17:34.498Z",
+      "updated_at": "2026-02-13T10:17:34.498Z"
+    },
+    {
+      "name": "Aditya Birla Group",
+      "row_group": "brands_row1",
+      "sort_order": 17,
+      "id": 34,
+      "created_at": "2026-02-13T10:17:39.704Z",
+      "updated_at": "2026-02-13T10:17:39.704Z"
+    },
+    {
+      "name": "Reliance",
+      "row_group": "brands_row1",
+      "sort_order": 18,
+      "id": 35,
+      "created_at": "2026-02-13T10:17:44.427Z",
+      "updated_at": "2026-02-13T10:17:44.427Z"
+    },
+    {
+      "name": "Incredible India",
+      "row_group": "brands_row1",
+      "sort_order": 19,
+      "id": 36,
+      "created_at": "2026-02-13T10:17:49.229Z",
+      "updated_at": "2026-02-13T10:17:49.229Z"
+    },
+    {
+      "name": "24 Mantra Organic",
+      "row_group": "brands_row1",
+      "sort_order": 20,
+      "id": 37,
+      "created_at": "2026-02-13T10:17:57.175Z",
+      "updated_at": "2026-02-13T10:17:57.175Z"
+    },
+    {
+      "name": "Cinthol",
+      "row_group": "brands_row1",
+      "sort_order": 21,
+      "id": 38,
+      "created_at": "2026-02-13T10:18:03.954Z",
+      "updated_at": "2026-02-13T10:18:03.954Z"
+    },
+    {
+      "name": "Big Bazaar",
+      "row_group": "brands_row1",
+      "sort_order": 22,
+      "id": 39,
+      "created_at": "2026-02-13T10:18:09.246Z",
+      "updated_at": "2026-02-13T10:18:09.246Z"
+    },
+    {
+      "name": "Anchor",
+      "row_group": "brands_row1",
+      "sort_order": 23,
+      "id": 40,
+      "created_at": "2026-02-13T10:18:15.037Z",
+      "updated_at": "2026-02-13T10:18:15.037Z"
+    },
+    {
+      "name": "Aquaguard",
+      "row_group": "brands_row1",
+      "sort_order": 24,
+      "id": 41,
+      "created_at": "2026-02-13T10:18:21.417Z",
+      "updated_at": "2026-02-13T10:18:21.417Z"
+    },
+    {
+      "name": "Wonder Cement",
+      "row_group": "brands_row1",
+      "sort_order": 25,
+      "id": 42,
+      "created_at": "2026-02-13T10:18:27.136Z",
+      "updated_at": "2026-02-13T10:18:27.136Z"
+    },
+    {
+      "name": "Ambuja Cement",
+      "row_group": "brands_row1",
+      "sort_order": 26,
+      "id": 43,
+      "created_at": "2026-02-13T10:18:32.570Z",
+      "updated_at": "2026-02-13T10:18:32.570Z"
+    },
+    {
+      "name": "Hero",
+      "row_group": "brands_row1",
+      "sort_order": 27,
+      "id": 44,
+      "created_at": "2026-02-13T10:18:38.136Z",
+      "updated_at": "2026-02-13T10:18:38.136Z"
+    },
+    {
+      "name": "Fortune",
+      "row_group": "brands_row1",
+      "sort_order": 28,
+      "id": 45,
+      "created_at": "2026-02-13T10:18:44.660Z",
+      "updated_at": "2026-02-13T10:18:44.660Z"
+    },
+    {
+      "name": "Dabur Hajmola",
+      "row_group": "brands_row1",
+      "sort_order": 29,
+      "id": 46,
+      "created_at": "2026-02-13T10:18:50.846Z",
+      "updated_at": "2026-02-13T10:18:50.846Z"
+    },
+    {
+      "name": "&pictures",
+      "row_group": "brands_row1",
+      "sort_order": 30,
+      "id": 47,
+      "created_at": "2026-02-13T10:18:56.688Z",
+      "updated_at": "2026-02-13T10:18:56.688Z"
+    },
+    {
+      "name": "Samsung",
+      "row_group": "brands_row1",
+      "sort_order": 31,
+      "id": 48,
+      "created_at": "2026-02-13T10:19:04.438Z",
+      "updated_at": "2026-02-13T10:19:04.438Z"
+    },
+    {
+      "name": "Berger (Lewis Berger)",
+      "row_group": "brands_row1",
+      "sort_order": 32,
+      "id": 49,
+      "created_at": "2026-02-13T10:19:10.224Z",
+      "updated_at": "2026-02-13T10:19:10.224Z"
+    },
+    {
+      "name": "Pantaloons",
+      "row_group": "brands_row1",
+      "sort_order": 33,
+      "id": 50,
+      "created_at": "2026-02-13T10:19:16.123Z",
+      "updated_at": "2026-02-13T10:19:16.123Z"
+    },
+    {
+      "name": "Spaces",
+      "row_group": "brands_row1",
+      "sort_order": 34,
+      "id": 51,
+      "created_at": "2026-02-13T10:19:23.452Z",
+      "updated_at": "2026-02-13T10:19:23.452Z"
+    },
+    {
+      "name": "Good Knight",
+      "row_group": "brands_row1",
+      "sort_order": 35,
+      "id": 52,
+      "created_at": "2026-02-13T10:19:31.656Z",
+      "updated_at": "2026-02-13T10:19:31.656Z"
+    },
+    {
+      "name": "Nescafé",
+      "row_group": "brands_row1",
+      "sort_order": 36,
+      "id": 53,
+      "created_at": "2026-02-13T10:19:36.597Z",
+      "updated_at": "2026-02-13T10:19:36.597Z"
+    },
+    {
+      "name": "Patanjali",
+      "row_group": "brands_row1",
+      "sort_order": 37,
+      "id": 54,
+      "created_at": "2026-02-13T10:19:42.098Z",
+      "updated_at": "2026-02-13T10:19:42.098Z"
+    },
+    {
+      "name": "Maggi",
+      "row_group": "brands_row1",
+      "sort_order": 38,
+      "id": 55,
+      "created_at": "2026-02-13T10:19:47.638Z",
+      "updated_at": "2026-02-13T10:19:47.638Z"
+    },
+    {
+      "name": "Ten Sports",
+      "row_group": "brands_row2",
+      "sort_order": 1,
+      "id": 56,
+      "created_at": "2026-02-13T10:19:54.537Z",
+      "updated_at": "2026-02-13T10:19:54.537Z"
+    },
+    {
+      "name": "Pepsodent",
+      "row_group": "brands_row2",
+      "sort_order": 2,
+      "id": 57,
+      "created_at": "2026-02-13T10:20:03.252Z",
+      "updated_at": "2026-02-13T10:20:03.252Z"
+    },
+    {
+      "name": "Suzuki",
+      "row_group": "brands_row2",
+      "sort_order": 3,
+      "id": 58,
+      "created_at": "2026-02-13T10:20:11.445Z",
+      "updated_at": "2026-02-13T10:20:11.445Z"
+    },
+    {
+      "name": "MakeMyTrip",
+      "row_group": "brands_row2",
+      "sort_order": 4,
+      "id": 59,
+      "created_at": "2026-02-13T10:20:19.710Z",
+      "updated_at": "2026-02-13T10:20:19.710Z"
+    },
+    {
+      "name": "Dunkin’ Donuts",
+      "row_group": "brands_row2",
+      "sort_order": 5,
+      "id": 60,
+      "created_at": "2026-02-13T10:20:28.538Z",
+      "updated_at": "2026-02-13T10:20:28.538Z"
+    },
+    {
+      "name": "Havells",
+      "row_group": "brands_row2",
+      "sort_order": 6,
+      "id": 61,
+      "created_at": "2026-02-13T10:20:39.076Z",
+      "updated_at": "2026-02-13T10:20:39.076Z"
+    },
+    {
+      "name": "Quikr",
+      "row_group": "brands_row2",
+      "sort_order": 7,
+      "id": 62,
+      "created_at": "2026-02-13T10:20:45.351Z",
+      "updated_at": "2026-02-13T10:20:45.351Z"
+    },
+    {
+      "name": "Ezee",
+      "row_group": "brands_row2",
+      "sort_order": 8,
+      "id": 63,
+      "created_at": "2026-02-13T10:20:51.428Z",
+      "updated_at": "2026-02-13T10:20:51.428Z"
+    },
+    {
+      "name": "TVS",
+      "row_group": "brands_row2",
+      "sort_order": 9,
+      "id": 64,
+      "created_at": "2026-02-13T10:20:57.301Z",
+      "updated_at": "2026-02-13T10:20:57.301Z"
+    },
+    {
+      "name": "Isharya",
+      "row_group": "brands_row2",
+      "sort_order": 10,
+      "id": 65,
+      "created_at": "2026-02-13T10:21:03.953Z",
+      "updated_at": "2026-02-13T10:21:03.953Z"
+    },
+    {
+      "name": "Karur Vysya Bank (KVB)",
+      "row_group": "brands_row2",
+      "sort_order": 11,
+      "id": 66,
+      "created_at": "2026-02-13T10:21:11.092Z",
+      "updated_at": "2026-02-13T10:21:11.092Z"
+    },
+    {
+      "name": "Nestlé",
+      "row_group": "brands_row2",
+      "sort_order": 12,
+      "id": 67,
+      "created_at": "2026-02-13T10:21:34.176Z",
+      "updated_at": "2026-02-13T10:21:34.176Z"
+    },
+    {
+      "name": "Mobiistar",
+      "row_group": "brands_row2",
+      "sort_order": 13,
+      "id": 71,
+      "created_at": "2026-02-13T10:22:09.638Z",
+      "updated_at": "2026-02-13T10:22:09.638Z"
+    },
+    {
+      "name": "Vise",
+      "row_group": "brands_row2",
+      "sort_order": 14,
+      "id": 72,
+      "created_at": "2026-02-13T10:22:21.792Z",
+      "updated_at": "2026-02-13T10:22:21.792Z"
+    },
+    {
+      "name": "Larah (by Borosil)",
+      "row_group": "brands_row2",
+      "sort_order": 15,
+      "id": 73,
+      "created_at": "2026-02-13T10:22:27.886Z",
+      "updated_at": "2026-02-13T10:22:27.886Z"
+    },
+    {
+      "name": "Myntra",
+      "row_group": "brands_row2",
+      "sort_order": 16,
+      "id": 74,
+      "created_at": "2026-02-13T10:22:37.530Z",
+      "updated_at": "2026-02-13T10:22:37.530Z"
+    },
+    {
+      "name": "Wild Stone",
+      "row_group": "brands_row2",
+      "sort_order": 17,
+      "id": 75,
+      "created_at": "2026-02-13T10:22:57.424Z",
+      "updated_at": "2026-02-13T10:22:57.424Z"
+    },
+    {
+      "name": "Mi",
+      "row_group": "brands_row2",
+      "sort_order": 18,
+      "id": 76,
+      "created_at": "2026-02-13T10:23:03.686Z",
+      "updated_at": "2026-02-13T10:23:03.686Z"
+    },
+    {
+      "name": "MDH",
+      "row_group": "brands_row2",
+      "sort_order": 19,
+      "id": 77,
+      "created_at": "2026-02-13T10:23:09.540Z",
+      "updated_at": "2026-02-13T10:23:09.540Z"
+    },
+    {
+      "name": "JK",
+      "row_group": "brands_row2",
+      "sort_order": 20,
+      "id": 78,
+      "created_at": "2026-02-13T10:23:16.794Z",
+      "updated_at": "2026-02-13T10:23:16.794Z"
+    },
+    {
+      "name": "Claz",
+      "row_group": "brands_row2",
+      "sort_order": 21,
+      "id": 79,
+      "created_at": "2026-02-13T10:23:22.726Z",
+      "updated_at": "2026-02-13T10:23:22.726Z"
+    },
+    {
+      "name": "NACO",
+      "row_group": "brands_row2",
+      "sort_order": 22,
+      "id": 80,
+      "created_at": "2026-02-13T10:23:29.111Z",
+      "updated_at": "2026-02-13T10:23:29.111Z"
+    },
+    {
+      "name": "Ayur Herbals",
+      "row_group": "brands_row2",
+      "sort_order": 23,
+      "id": 81,
+      "created_at": "2026-02-13T10:23:35.903Z",
+      "updated_at": "2026-02-13T10:23:35.903Z"
+    },
+    {
+      "name": "Star",
+      "row_group": "brands_row2",
+      "sort_order": 24,
+      "id": 82,
+      "created_at": "2026-02-13T10:23:41.506Z",
+      "updated_at": "2026-02-13T10:23:41.506Z"
+    },
+    {
+      "name": "UltraTech Cement",
+      "row_group": "brands_row2",
+      "sort_order": 25,
+      "id": 83,
+      "created_at": "2026-02-13T10:23:47.649Z",
+      "updated_at": "2026-02-13T10:23:47.649Z"
+    },
+    {
+      "name": "Rasna",
+      "row_group": "brands_row2",
+      "sort_order": 26,
+      "id": 84,
+      "created_at": "2026-02-13T10:23:53.740Z",
+      "updated_at": "2026-02-13T10:23:53.740Z"
+    },
+    {
+      "name": "Isha Foundation",
+      "row_group": "brands_row2",
+      "sort_order": 27,
+      "id": 85,
+      "created_at": "2026-02-13T10:23:59.762Z",
+      "updated_at": "2026-02-13T10:23:59.762Z"
+    },
+    {
+      "name": "Zee Cinema",
+      "row_group": "brands_row2",
+      "sort_order": 28,
+      "id": 86,
+      "created_at": "2026-02-13T10:24:05.874Z",
+      "updated_at": "2026-02-13T10:24:05.874Z"
+    },
+    {
+      "name": "Zee TV",
+      "row_group": "brands_row2",
+      "sort_order": 29,
+      "id": 87,
+      "created_at": "2026-02-13T10:24:14.387Z",
+      "updated_at": "2026-02-13T10:24:14.387Z"
+    },
+    {
+      "name": "Zcafé",
+      "row_group": "brands_row2",
+      "sort_order": 30,
+      "id": 88,
+      "created_at": "2026-02-13T10:24:21.392Z",
+      "updated_at": "2026-02-13T10:24:21.392Z"
+    },
+    {
+      "name": "Subisu",
+      "row_group": "brands_row2",
+      "sort_order": 31,
+      "id": 89,
+      "created_at": "2026-02-13T10:24:31.967Z",
+      "updated_at": "2026-02-13T10:24:31.967Z"
+    },
+    {
+      "name": "Sa Re Ga Ma",
+      "row_group": "brands_row2",
+      "sort_order": 32,
+      "id": 90,
+      "created_at": "2026-02-13T10:24:38.942Z",
+      "updated_at": "2026-02-13T10:24:38.942Z"
+    },
+    {
+      "name": "Man Hunt",
+      "row_group": "brands_row2",
+      "sort_order": 33,
+      "id": 91,
+      "created_at": "2026-02-13T10:24:46.465Z",
+      "updated_at": "2026-02-13T10:24:46.465Z"
+    },
+    {
+      "name": "YU MPL",
+      "row_group": "brands_row2",
+      "sort_order": 34,
+      "id": 92,
+      "created_at": "2026-02-13T10:24:53.394Z",
+      "updated_at": "2026-02-13T10:24:53.394Z"
+    },
+    {
+      "name": "Xpert",
+      "row_group": "brands_row2",
+      "sort_order": 35,
+      "id": 93,
+      "created_at": "2026-02-13T10:25:00.508Z",
+      "updated_at": "2026-02-13T10:25:00.508Z"
+    },
+    {
+      "name": "Marvel",
+      "row_group": "brands_row2",
+      "sort_order": 36,
+      "id": 94,
+      "created_at": "2026-02-13T10:25:08.489Z",
+      "updated_at": "2026-02-13T10:25:08.489Z"
+    }
+  ],
   "youtube_videos": [
     {
       "title": "More Sajan Remastered",

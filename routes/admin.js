@@ -441,9 +441,9 @@ router.get('/settings', (req, res) => {
 });
 
 router.post('/settings/site', (req, res) => {
-    const fields = ['meta_title', 'meta_description'];
+    const fields = ['meta_title', 'meta_description', 'meta_keywords', 'canonical_url', 'og_image', 'robots_meta', 'google_site_verification'];
     fields.forEach(f => saveSetting(f, req.body[f]));
-    setFlash(req, 'success', 'Site settings updated successfully');
+    setFlash(req, 'success', 'SEO settings updated successfully');
     res.redirect('/admin/settings');
 });
 

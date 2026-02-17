@@ -3,17 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %></title>
     <meta name="description" content="<%= settings.meta_description || 'Arjuna Harjai - Composer, Singer-Songwriter & Music Producer.' %>">
-    <meta name="keywords" content="Arjuna Harjai, composer, music producer, Bollywood, film score, singer-songwriter">
+    <meta name="keywords" content="<%= settings.meta_keywords || 'Arjuna Harjai, composer, music producer, Bollywood, film score, singer-songwriter' %>">
     <meta name="author" content="Arjuna Harjai">
+    <meta name="robots" content="<%= settings.robots_meta || 'index, follow' %>">
+    <link rel="canonical" href="<%= settings.canonical_url || 'https://www.arjunaharjai.com' %>">
+    <link rel="icon" type="image/png" href="/assets/images/gallery/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/gallery/favicon.png">
+    <% if (settings.google_site_verification) { %>
+    <meta name="google-site-verification" content="<%= settings.google_site_verification %>">
+    <% } %>
 
     <!-- Open Graph -->
     <meta property="og:title" content="<%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %>">
     <meta property="og:description" content="<%= settings.meta_description || 'Award-winning composer and music producer for Bollywood films and advertising.' %>">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.arjunaharjai.com">
+    <meta property="og:url" content="<%= settings.canonical_url || 'https://www.arjunaharjai.com' %>">
+    <% if (settings.og_image) { %>
+    <meta property="og:image" content="<%= settings.og_image %>">
+    <% } %>
+    <meta property="og:site_name" content="Arjuna Harjai">
 
-    <title><%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %></title>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= settings.meta_title || 'Arjuna Harjai | Composer & Music Producer' %>">
+    <meta name="twitter:description" content="<%= settings.meta_description || 'Arjuna Harjai - Composer, Singer-Songwriter & Music Producer.' %>">
+    <% if (settings.og_image) { %>
+    <meta name="twitter:image" content="<%= settings.og_image %>">
+    <% } %>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arjuna Harjai",
+        "url": "<%= settings.canonical_url || 'https://www.arjunaharjai.com' %>",
+        "description": "<%= settings.meta_description || 'Composer, Singer-Songwriter & Music Producer' %>",
+        "jobTitle": "Composer & Music Producer",
+        "sameAs": [
+            <%= settings.social_spotify ? '"' + settings.social_spotify + '",' : '' %>
+            <%= settings.social_youtube ? '"' + settings.social_youtube + '",' : '' %>
+            <%= settings.social_instagram ? '"' + settings.social_instagram + '"' : '' %>
+        ]<% if (settings.og_image) { %>,
+        "image": "<%= settings.og_image %>"<% } %>
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

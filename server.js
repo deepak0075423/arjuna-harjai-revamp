@@ -11,6 +11,9 @@ const store = require('./config/store');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for correct hostname behind load balancers
+app.set('trust proxy', Number(process.env.TRUST_PROXY) || 0);
+
 // Simple cache-busting token for static assets
 app.locals.assetVersion = process.env.ASSET_VERSION || String(Date.now());
 
@@ -48,6 +51,15 @@ app.use(sessionConfig);
 
 // Add user to all templates
 app.use(addUserToLocals);
+
+// Redirect non-www to www
+app.use((req, res, next) => {
+    const host = req.hostname;
+    if (host === 'arjunaharjai.com') {
+        return res.redirect(301, 'https://www.arjunaharjai.com' + req.originalUrl);
+    }
+    next();
+});
 
 // Routes
 app.use('/', require('./routes/index'));
